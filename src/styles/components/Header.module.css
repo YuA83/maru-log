@@ -1,0 +1,172 @@
+/* ── 헤더 ── */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  /* 기본 glass */
+  background: var(--clr-header-base);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset,
+  0 4px 20px var(--clr-slate-8);
+  transition: background var(--transition), box-shadow var(--transition),
+  backdrop-filter var(--transition);
+}
+
+/* 스크롤 후 glass 강화 */
+.scrolled {
+  background: var(--clr-header-scrolled);
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.85) inset,
+  0 6px 28px var(--clr-slate-14);
+}
+
+/* 상단 하이라이트 라인 — liquid glass 특유의 광택 */
+.topLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.9) 30%,
+      rgba(255, 255, 255, 1) 50%,
+      rgba(255, 255, 255, 0.9) 70%,
+      transparent 100%
+  );
+  pointer-events: none;
+}
+
+.inner {
+  max-width: var(--max-wide);
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* ── 로고 ── */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+/* 젬 아이콘 — 작은 glass 오브 */
+.logoGem {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--c-peach) 0%, var(--c-rose) 50%, var(--c-slate) 100%);
+  box-shadow: 0 2px 8px var(--clr-rose-50),
+  inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
+.logoText {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+/* ── 네비게이션 ── */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0 auto;
+}
+
+.navLink {
+  position: relative;
+  padding: 0.4em 0.85em;
+  font-size: var(--text-sm);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--text-secondary);
+  border-radius: var(--radius-pill);
+  transition: color var(--transition), background var(--transition);
+}
+
+.navLink:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* 활성 링크 — glass pill */
+.navActive {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset,
+  0 2px 8px var(--clr-slate-12);
+  font-weight: 500;
+}
+
+/* ── 우측 액션 ── */
+.actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.writeBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45em 1.1em;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 2px 8px var(--clr-slate-10),
+  inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: all var(--transition);
+  text-decoration: none;
+}
+
+.writeBtn:hover {
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--text-primary);
+  box-shadow: 0 4px 16px var(--clr-slate-16),
+  inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
+}
+
+/* ── 모바일 ── */
+@media (max-width: 640px) {
+  .inner {
+    padding: 0 1.25rem;
+    gap: 1rem;
+  }
+
+  .nav {
+    gap: 0;
+  }
+
+  .navLink {
+    padding: 0.35em 0.65em;
+  }
+
+  .writeBtn span {
+    display: none;
+  }
+
+  .writeBtn {
+    padding: 0.5em;
+    border-radius: 10px;
+  }
+}

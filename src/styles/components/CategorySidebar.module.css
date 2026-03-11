@@ -1,0 +1,232 @@
+/* ── 사이드바 컨테이너 ── */
+.sidebar {
+  width: 210px;
+  flex-shrink: 0;
+  position: sticky;
+  top: calc(58px + 2rem);
+  align-self: flex-start;
+  max-height: calc(100vh - 58px - 4rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--clr-silver-30) transparent;
+}
+
+/* glass 패널 */
+.sidebar > * {
+}
+
+.sidebarLabel {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ── 트리 ── */
+.tree {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 20px var(--clr-slate-10),
+  inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+/* ── 전체 보기 링크 ── */
+.allLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+  margin-bottom: 4px;
+}
+
+.allLink:hover {
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--text-primary);
+}
+
+.allActive {
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--text-primary);
+  font-weight: 500;
+  box-shadow: 0 2px 8px var(--clr-slate-10);
+}
+
+.allIcon {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* ── 구분선 ── */
+.divider {
+  height: 1px;
+  background: var(--clr-silver-25);
+  margin: 4px 0;
+}
+
+/* ── 카테고리 그룹 ── */
+.group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Parent 행 ── */
+.parentRow {
+  display: flex;
+  align-items: center;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition);
+}
+
+.parentRow:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* 토글 버튼 */
+.toggleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-ghost);
+  flex-shrink: 0;
+  padding: 0;
+  transition: color var(--transition);
+}
+
+.toggleBtn:hover {
+  color: var(--text-muted);
+}
+
+.chevron {
+  display: inline-block;
+  font-size: 0.9rem;
+  line-height: 1;
+  transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.chevronOpen {
+  transform: rotate(90deg);
+}
+
+/* Parent 레이블 */
+.parentLink {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 1;
+  padding: 0.4rem 0.4rem 0.4rem 0;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  min-width: 0;
+  transition: color var(--transition);
+}
+
+.parentLink:hover {
+  color: var(--text-primary);
+}
+
+.parentIcon {
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.parentLabel {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Children 아코디언 ── */
+.children {
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.childrenOpen {
+  max-height: 300px;
+}
+
+/* Child 링크 */
+.childLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.32rem 0.6rem 0.32rem 2rem;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), color var(--transition);
+  letter-spacing: 0.005em;
+}
+
+.childLink:hover {
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--text-secondary);
+}
+
+.childActive {
+  background: var(--clr-rose-25) !important;
+  color: var(--c-slate) !important;
+  font-weight: 500;
+}
+
+.childDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+  opacity: 0.45;
+}
+
+/* ── 수 뱃지 ── */
+.count {
+  margin-left: auto;
+  font-size: 10px;
+  color: var(--text-ghost);
+  background: var(--clr-silver-18);
+  border: 1px solid var(--clr-silver-25);
+  padding: 0 0.45em;
+  border-radius: var(--radius-pill);
+  min-width: 1.5em;
+  text-align: center;
+  line-height: 1.7;
+  flex-shrink: 0;
+}
+
+/* ── 모바일 숨김 ── */
+@media (max-width: 860px) {
+  .sidebar {
+    display: none;
+  }
+}

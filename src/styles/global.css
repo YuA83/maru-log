@@ -1,0 +1,453 @@
+/* ================================================================
+   LIQUID GLASS BLOG — Global Design System (Navy & Rose · Font B: 모던 세련 — Plus Jakarta Sans(헤딩) + Pretendard(본문))
+   ──────────────────────────────────────────────────────────────
+   ★ 팔레트 변경 시 수정할 곳: :root 상단 "원시값" 블록 1곳만
+     - --p-*-r/g/b  : 팔레트 5색의 RGB 채널값
+     - --bg-*       : 배경 3단계 hex
+   나머지 모든 rgba, shadow, background는 시맨틱 토큰을 참조하므로
+   module.css 파일은 건드릴 필요 없음.
+   ================================================================ */
+
+/* ── 폰트 로드 — 모던 세련 — Plus Jakarta Sans(헤딩) + Pretendard(본문) ── */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+
+:root {
+  /* ================================================================
+     ★ 팔레트 원시값 — 팔레트 교체 시 이 블록만 수정
+     ================================================================ */
+
+  /* --c-slate  */
+  --p-slate-r: 32;
+  --p-slate-g: 63;
+  --p-slate-b: 84; /* #203f54 */
+  /* --c-silver */
+  --p-silver-r: 80;
+  --p-silver-g: 142;
+  --p-silver-b: 191; /* #508ebf */
+  /* --c-blush  */
+  --p-blush-r: 204;
+  --p-blush-g: 219;
+  --p-blush-b: 234; /* #ccdbea */
+  /* --c-peach  */
+  --p-peach-r: 220;
+  --p-peach-g: 151;
+  --p-peach-b: 165; /* #dc97a5 */
+  /* --c-rose   */
+  --p-rose-r: 196;
+  --p-rose-g: 131;
+  --p-rose-b: 146; /* #c48392 */
+
+  /* hex 단축 — 단색 사용처용 (border-color, color 속성 등) */
+  --c-slate: #203f54;
+  --c-silver: #508ebf;
+  --c-blush: #ccdbea;
+  --c-peach: #dc97a5;
+  --c-rose: #c48392;
+
+  /* 배경 */
+  --bg-base: #f7f6f6;
+  --bg-mid: #f0f3f7;
+  --bg-deep: #e8eef5;
+
+  /* 헤더 배경 고정 rgba (유일하게 배경과 별도 조정 필요) */
+  --clr-header-base: rgba(247, 246, 246, 0.78);
+  --clr-header-scrolled: rgba(243, 246, 250, 0.90);
+
+  /* ================================================================
+     시맨틱 컬러 토큰 — 모든 module.css는 이 변수만 참조
+     rgba 숫자를 module.css에 직접 쓰지 말 것
+     ================================================================ */
+
+  /* slate 계열 — 섀도, 액센트, 포커스링 */
+  --clr-slate-8: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.08);
+  --clr-slate-10: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.10);
+  --clr-slate-12: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.12);
+  --clr-slate-14: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.14);
+  --clr-slate-15: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.15);
+  --clr-slate-16: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.16);
+  --clr-slate-18: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.18);
+  --clr-slate-20: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.20);
+  --clr-slate-22: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.22);
+  --clr-slate-28: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.28);
+  --clr-slate-30: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.30);
+  --clr-slate-35: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.35);
+  --clr-slate-40: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.40);
+  --clr-slate-50: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.50);
+
+  /* silver 계열 — 구분선, 배경, 스크롤바 */
+  --clr-silver-18: rgba(var(--p-silver-r), var(--p-silver-g), var(--p-silver-b), 0.18);
+  --clr-silver-20: rgba(var(--p-silver-r), var(--p-silver-g), var(--p-silver-b), 0.20);
+  --clr-silver-25: rgba(var(--p-silver-r), var(--p-silver-g), var(--p-silver-b), 0.25);
+  --clr-silver-30: rgba(var(--p-silver-r), var(--p-silver-g), var(--p-silver-b), 0.30);
+  --clr-silver-35: rgba(var(--p-silver-r), var(--p-silver-g), var(--p-silver-b), 0.35);
+  --clr-silver-45: rgba(var(--p-silver-r), var(--p-silver-g), var(--p-silver-b), 0.45);
+
+  /* rose 계열 — 뱃지, 강조, orb, 로고 젬 */
+  --clr-rose-12: rgba(var(--p-rose-r), var(--p-rose-g), var(--p-rose-b), 0.12);
+  --clr-rose-22: rgba(var(--p-rose-r), var(--p-rose-g), var(--p-rose-b), 0.22);
+  --clr-rose-25: rgba(var(--p-rose-r), var(--p-rose-g), var(--p-rose-b), 0.25);
+  --clr-rose-30: rgba(var(--p-rose-r), var(--p-rose-g), var(--p-rose-b), 0.30);
+  --clr-rose-40: rgba(var(--p-rose-r), var(--p-rose-g), var(--p-rose-b), 0.40);
+  --clr-rose-45: rgba(var(--p-rose-r), var(--p-rose-g), var(--p-rose-b), 0.45);
+  --clr-rose-50: rgba(var(--p-rose-r), var(--p-rose-g), var(--p-rose-b), 0.50);
+
+  /* peach 계열 — orb, 배경 하이라이트 */
+  --clr-peach-25: rgba(var(--p-peach-r), var(--p-peach-g), var(--p-peach-b), 0.25);
+  --clr-peach-30: rgba(var(--p-peach-r), var(--p-peach-g), var(--p-peach-b), 0.30);
+  --clr-peach-35: rgba(var(--p-peach-r), var(--p-peach-g), var(--p-peach-b), 0.35);
+  --clr-peach-55: rgba(var(--p-peach-r), var(--p-peach-g), var(--p-peach-b), 0.55);
+
+  /* ================================================================
+     Glass 레이어 — 토큰 기반
+     ================================================================ */
+  --glass-bg: rgba(255, 255, 255, 0.52);
+  --glass-bg-hover: rgba(255, 255, 255, 0.68);
+  --glass-bg-deep: rgba(255, 255, 255, 0.38);
+  --glass-border: rgba(255, 255, 255, 0.75);
+  --glass-border-subtle: rgba(255, 255, 255, 0.45);
+  --glass-shadow: 0 8px 32px var(--clr-slate-18), 0 2px 8px var(--clr-slate-10);
+  --glass-shadow-lg: 0 20px 60px var(--clr-slate-22), 0 4px 16px var(--clr-slate-14);
+  --glass-shadow-sm: 0 4px 16px var(--clr-slate-12), 0 1px 4px var(--clr-slate-8);
+
+  /* ================================================================
+     텍스트
+     ================================================================ */
+  --text-primary: #1a2a36;
+  --text-secondary: #3d5566;
+  --text-muted: #7a94a6;
+  --text-ghost: #a8bcc8;
+
+  /* ================================================================
+     폰트
+     ================================================================ */
+  --font-display: 'Plus Jakarta Sans', 'Apple SD Gothic Neo', sans-serif;
+  --font-body: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+  --font-mono: 'Pretendard Variable', 'SF Mono', ui-monospace, monospace;
+
+  /* ================================================================
+     타이포 스케일
+     ================================================================ */
+  --text-xs: 0.6875rem; /* 11px */
+  --text-sm: 0.8125rem; /* 13px */
+  --text-base: 0.9375rem; /* 15px */
+  --text-md: 1.0625rem; /* 17px */
+  --text-lg: 1.1875rem; /* 19px */
+  --text-xl: 1.4375rem; /* 23px */
+  --text-2xl: 1.875rem; /* 30px */
+  --text-3xl: 2.5rem; /* 40px */
+  --text-4xl: 3.25rem; /* 52px */
+
+  /* ================================================================
+     레이아웃 & 모션
+     ================================================================ */
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  --max-content: 700px;
+  --max-wide: 1120px;
+
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  --blur-sm: blur(8px);
+  --blur: blur(16px);
+  --blur-lg: blur(28px);
+  --blur-xl: blur(48px);
+}
+
+/* ── Reset ────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: radial-gradient(ellipse 80% 50% at 20% 10%, var(--clr-rose-45) 0%, transparent 60%),
+  radial-gradient(ellipse 60% 40% at 80% 80%, var(--clr-silver-35) 0%, transparent 55%),
+  radial-gradient(ellipse 70% 60% at 50% 50%, var(--clr-peach-25) 0%, transparent 70%),
+  linear-gradient(160deg, var(--bg-base) 0%, var(--bg-mid) 40%, var(--bg-deep) 100%);
+  background-attachment: fixed;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+::selection {
+  background: var(--clr-rose-40);
+  color: var(--text-primary);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--clr-slate-30);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-slate-50);
+}
+
+/* ── Glass 유틸리티 ───────────────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-deep {
+  background: var(--glass-bg-deep);
+  backdrop-filter: var(--blur-lg);
+  -webkit-backdrop-filter: var(--blur-lg);
+  border: 1px solid var(--glass-border-subtle);
+  box-shadow: var(--glass-shadow-lg);
+}
+
+/* ── 애니메이션 ───────────────────────────────────────────────── */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.page-enter {
+  animation: pageEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ================================================================
+   PROSE (마크다운 렌더링)
+   ================================================================ */
+.prose {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: 1.8;
+  color: var(--text-primary);
+  letter-spacing: -0.003em;
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-top: 2.5em;
+  margin-bottom: 0.75em;
+  letter-spacing: -0.02em;
+}
+
+.prose h1 {
+  font-size: var(--text-3xl);
+  margin-top: 0;
+}
+
+.prose h2 {
+  font-size: var(--text-xl);
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--clr-silver-30);
+}
+
+.prose h3 {
+  font-size: var(--text-lg);
+}
+
+.prose h4 {
+  font-size: var(--text-md);
+  font-weight: 500;
+}
+
+.prose p {
+  margin-bottom: 1.5em;
+}
+
+.prose strong {
+  font-weight: 600;
+}
+
+.prose blockquote {
+  border-left: 2px solid var(--c-rose);
+  margin: 2em 0;
+  padding: 1em 1.5em;
+  background: var(--clr-rose-12);
+  backdrop-filter: blur(4px);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.prose blockquote p {
+  margin: 0;
+}
+
+.prose code:not(pre code) {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--clr-slate-10);
+  border: 1px solid var(--clr-slate-20);
+  padding: 0.15em 0.45em;
+  border-radius: 6px;
+  color: var(--c-slate);
+}
+
+.prose pre {
+  background: rgba(40, 45, 52, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  padding: 1.5em;
+  overflow-x: auto;
+  margin: 2em 0;
+  font-size: var(--text-sm);
+  line-height: 1.65;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.prose pre code {
+  font-family: var(--font-mono);
+  background: none;
+  border: none;
+  padding: 0;
+  color: #e2ddd8;
+  font-size: inherit;
+}
+
+.prose ul, .prose ol {
+  margin: 1.25em 0;
+  padding-left: 1.5em;
+}
+
+.prose li {
+  margin-bottom: 0.4em;
+}
+
+.prose li::marker {
+  color: var(--c-rose);
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--clr-silver-35);
+  margin: 3em 0;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  font-size: var(--text-sm);
+  background: var(--glass-bg);
+  backdrop-filter: var(--blur-sm);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.prose th, .prose td {
+  border: 1px solid var(--clr-silver-25);
+  padding: 0.65em 1em;
+  text-align: left;
+}
+
+.prose th {
+  background: var(--clr-slate-10);
+  font-weight: 600;
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.prose img {
+  border-radius: var(--radius);
+  margin: 2em auto;
+  box-shadow: var(--glass-shadow-lg);
+}
+
+.prose a {
+  color: var(--c-slate);
+  text-decoration: underline;
+  text-decoration-color: var(--clr-slate-40);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--transition);
+}
+
+.prose a:hover {
+  text-decoration-color: var(--c-slate);
+}

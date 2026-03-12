@@ -9,57 +9,63 @@
    ================================================================ */
 
 /* ── 폰트 로드 — 모던 세련 — Plus Jakarta Sans(헤딩) + Pretendard(본문) ── */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap');
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
 
 :root {
   /* ================================================================
-     ★ 팔레트 원시값 — 팔레트 교체 시 이 블록만 수정
+     ★ 팔레트 원시값 — 화이트 + 연보라 한 방울
+        팔레트 교체 시 이 블록만 수정. 나머지 module.css는 건드릴 필요 없음.
      ================================================================ */
 
-  /* --c-slate  */
-  --p-slate-r: 32;
-  --p-slate-g: 63;
-  --p-slate-b: 84; /* #203f54 */
-  /* --c-silver */
-  --p-silver-r: 80;
-  --p-silver-g: 142;
-  --p-silver-b: 191; /* #508ebf */
-  /* --c-blush  */
-  --p-blush-r: 204;
-  --p-blush-g: 219;
-  --p-blush-b: 234; /* #ccdbea */
-  /* --c-peach  */
-  --p-peach-r: 220;
-  --p-peach-g: 151;
-  --p-peach-b: 165; /* #dc97a5 */
-  /* --c-rose   */
-  --p-rose-r: 196;
-  --p-rose-g: 131;
-  --p-rose-b: 146; /* #c48392 */
+  /* accent — 연보라 #7c6fa0 */
+  --p-slate-r: 124;
+  --p-slate-g: 111;
+  --p-slate-b: 160;
+  /* mid lavender — #a99cc8 */
+  --p-silver-r: 169;
+  --p-silver-g: 156;
+  --p-silver-b: 200;
+  /* light lavender — #cdc7e2 */
+  --p-blush-r: 205;
+  --p-blush-g: 199;
+  --p-blush-b: 226;
+  /* 이하 peach/rose → vio 계열로 매핑 (구 module.css 변수명 호환 유지) */
+  --p-peach-r: 168;
+  --p-peach-g: 156;
+  --p-peach-b: 200;
+  --p-rose-r: 124;
+  --p-rose-g: 111;
+  --p-rose-b: 160;
 
-  /* hex 단축 — 단색 사용처용 (border-color, color 속성 등) */
-  --c-slate: #203f54;
-  --c-silver: #508ebf;
-  --c-blush: #ccdbea;
-  --c-peach: #dc97a5;
-  --c-rose: #c48392;
+  /* hex 단축 */
+  --c-slate: #7c6fa0; /* accent (구 c-slate 매핑) */
+  --c-silver: #a99cc8; /* mid lavender */
+  --c-blush: #cdc7e2; /* light lavender */
+  --c-peach: #a99cc8; /* mid lavender (구 c-peach 매핑) */
+  --c-rose: #7c6fa0; /* accent (구 c-rose 매핑) */
 
-  /* 배경 */
-  --bg-base: #f7f6f6;
-  --bg-mid: #f0f3f7;
-  --bg-deep: #e8eef5;
+  /* 신규 — 연보라 계열 전체 */
+  --c-vio: #7c6fa0;
+  --c-vio-m: #a99cc8;
+  --c-vio-l: #cdc7e2;
+  --c-vio-xl: #e8e5f2;
+  --c-vio-2xl: #f3f1f9;
 
-  /* 헤더 배경 고정 rgba (유일하게 배경과 별도 조정 필요) */
-  --clr-header-base: rgba(247, 246, 246, 0.78);
-  --clr-header-scrolled: rgba(243, 246, 250, 0.90);
+  /* 배경 — 화이트에 연보라 한 방울 */
+  --bg-base: #f9f8fd;
+  --bg-mid: #f3f1f9;
+  --bg-deep: #ece9f5;
+
+  /* 헤더 배경 */
+  --clr-header-base: rgba(249, 248, 253, 0.72);
+  --clr-header-scrolled: rgba(249, 248, 253, 0.92);
 
   /* ================================================================
      시맨틱 컬러 토큰 — 모든 module.css는 이 변수만 참조
-     rgba 숫자를 module.css에 직접 쓰지 말 것
      ================================================================ */
 
-  /* slate 계열 — 섀도, 액센트, 포커스링 */
+  /* slate 계열 (구 navy → 연보라 accent) */
   --clr-slate-8: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.08);
   --clr-slate-10: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.10);
   --clr-slate-12: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.12);
@@ -75,7 +81,7 @@
   --clr-slate-40: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.40);
   --clr-slate-50: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.50);
 
-  /* silver 계열 — 구분선, 배경, 스크롤바 */
+  /* silver 계열 (구 sky → mid lavender) */
   --clr-silver-18: rgba(var(--p-silver-r), var(--p-silver-g), var(--p-silver-b), 0.18);
   --clr-silver-20: rgba(var(--p-silver-r), var(--p-silver-g), var(--p-silver-b), 0.20);
   --clr-silver-25: rgba(var(--p-silver-r), var(--p-silver-g), var(--p-silver-b), 0.25);
@@ -83,7 +89,7 @@
   --clr-silver-35: rgba(var(--p-silver-r), var(--p-silver-g), var(--p-silver-b), 0.35);
   --clr-silver-45: rgba(var(--p-silver-r), var(--p-silver-g), var(--p-silver-b), 0.45);
 
-  /* rose 계열 — 뱃지, 강조, orb, 로고 젬 */
+  /* rose 계열 (구 rose → vio accent, 호환 유지) */
   --clr-rose-12: rgba(var(--p-rose-r), var(--p-rose-g), var(--p-rose-b), 0.12);
   --clr-rose-22: rgba(var(--p-rose-r), var(--p-rose-g), var(--p-rose-b), 0.22);
   --clr-rose-25: rgba(var(--p-rose-r), var(--p-rose-g), var(--p-rose-b), 0.25);
@@ -92,31 +98,38 @@
   --clr-rose-45: rgba(var(--p-rose-r), var(--p-rose-g), var(--p-rose-b), 0.45);
   --clr-rose-50: rgba(var(--p-rose-r), var(--p-rose-g), var(--p-rose-b), 0.50);
 
-  /* peach 계열 — orb, 배경 하이라이트 */
+  /* peach 계열 (구 peach → mid lavender, 호환 유지) */
   --clr-peach-25: rgba(var(--p-peach-r), var(--p-peach-g), var(--p-peach-b), 0.25);
   --clr-peach-30: rgba(var(--p-peach-r), var(--p-peach-g), var(--p-peach-b), 0.30);
   --clr-peach-35: rgba(var(--p-peach-r), var(--p-peach-g), var(--p-peach-b), 0.35);
   --clr-peach-55: rgba(var(--p-peach-r), var(--p-peach-g), var(--p-peach-b), 0.55);
 
   /* ================================================================
-     Glass 레이어 — 토큰 기반
+     Liquid Glass 레이어 토큰
+     배경이 연하므로 fill 투명도를 낮춤 — glass가 배경을 그대로 비춤
      ================================================================ */
-  --glass-bg: rgba(255, 255, 255, 0.52);
-  --glass-bg-hover: rgba(255, 255, 255, 0.68);
-  --glass-bg-deep: rgba(255, 255, 255, 0.38);
-  --glass-border: rgba(255, 255, 255, 0.75);
-  --glass-border-subtle: rgba(255, 255, 255, 0.45);
-  --glass-shadow: 0 8px 32px var(--clr-slate-18), 0 2px 8px var(--clr-slate-10);
-  --glass-shadow-lg: 0 20px 60px var(--clr-slate-22), 0 4px 16px var(--clr-slate-14);
-  --glass-shadow-sm: 0 4px 16px var(--clr-slate-12), 0 1px 4px var(--clr-slate-8);
+
+  /* glass fill — 투명에 가까운 white (구 0.52 → 0.20) */
+  --glass-bg: rgba(255, 255, 255, 0.20);
+  --glass-bg-hover: rgba(255, 255, 255, 0.32);
+  --glass-bg-deep: rgba(255, 255, 255, 0.14);
+
+  /* 방향성 border */
+  --glass-border: rgba(255, 255, 255, 0.82); /* top specular */
+  --glass-border-subtle: rgba(255, 255, 255, 0.38); /* side */
+
+  /* shadows — 연보라 tint */
+  --glass-shadow: 0 6px 22px var(--clr-slate-12), 0 2px 6px var(--clr-slate-8);
+  --glass-shadow-lg: 0 16px 44px var(--clr-slate-16), 0 4px 14px var(--clr-slate-10);
+  --glass-shadow-sm: 0 2px 8px var(--clr-slate-8), 0 1px 2px var(--clr-slate-5, var(--clr-slate-8));
 
   /* ================================================================
-     텍스트
+     텍스트 — 보라 기반 중성 다크
      ================================================================ */
-  --text-primary: #1a2a36;
-  --text-secondary: #3d5566;
-  --text-muted: #7a94a6;
-  --text-ghost: #a8bcc8;
+  --text-primary: #1e1a2e;
+  --text-secondary: #3b3555;
+  --text-muted: #6e6888;
+  --text-ghost: #a49db8;
 
   /* ================================================================
      폰트
@@ -126,38 +139,41 @@
   --font-mono: 'Pretendard Variable', 'SF Mono', ui-monospace, monospace;
 
   /* ================================================================
-     타이포 스케일
+     타이포 스케일 — 한 단계씩 축소 (구 대비 약 -1~2px)
      ================================================================ */
-  --text-xs: 0.6875rem; /* 11px */
-  --text-sm: 0.8125rem; /* 13px */
-  --text-base: 0.9375rem; /* 15px */
-  --text-md: 1.0625rem; /* 17px */
-  --text-lg: 1.1875rem; /* 19px */
-  --text-xl: 1.4375rem; /* 23px */
-  --text-2xl: 1.875rem; /* 30px */
-  --text-3xl: 2.5rem; /* 40px */
-  --text-4xl: 3.25rem; /* 52px */
+  --text-xs: 0.625rem; /* 10px  (구 11px) */
+  --text-sm: 0.75rem; /* 12px  (구 13px) */
+  --text-base: 0.875rem; /* 14px  (구 15px) */
+  --text-md: 0.9375rem; /* 15px  (구 17px) */
+  --text-lg: 1.0625rem; /* 17px  (구 19px) */
+  --text-xl: 1.25rem; /* 20px  (구 23px) */
+  --text-2xl: 1.625rem; /* 26px  (구 30px) */
+  --text-3xl: 2.125rem; /* 34px  (구 40px) */
+  --text-4xl: 2.75rem; /* 44px  (구 52px) */
+
+  /* ================================================================
+     Concentric Radius — 바깥→안 비례 감소
+     ================================================================ */
+  --radius-sm: 6px; /* 내부 tag  (구 8px) */
+  --radius: 10px; /* 내부 요소 (구 14px) */
+  --radius-lg: 16px; /* 카드      (구 20px) */
+  --radius-xl: 24px; /* 페이지    (구 28px) */
+  --radius-pill: 999px;
 
   /* ================================================================
      레이아웃 & 모션
      ================================================================ */
-  --radius-sm: 8px;
-  --radius: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
-  --radius-pill: 999px;
-
   --max-content: 700px;
   --max-wide: 1120px;
 
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: 220ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
 
   --blur-sm: blur(8px);
-  --blur: blur(16px);
+  --blur: blur(20px);
   --blur-lg: blur(28px);
-  --blur-xl: blur(48px);
+  --blur-xl: blur(44px);
 }
 
 /* ── Reset ────────────────────────────────────────────────────── */
@@ -182,10 +198,19 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: radial-gradient(ellipse 80% 50% at 20% 10%, var(--clr-rose-45) 0%, transparent 60%),
-  radial-gradient(ellipse 60% 40% at 80% 80%, var(--clr-silver-35) 0%, transparent 55%),
-  radial-gradient(ellipse 70% 60% at 50% 50%, var(--clr-peach-25) 0%, transparent 70%),
-  linear-gradient(160deg, var(--bg-base) 0%, var(--bg-mid) 40%, var(--bg-deep) 100%);
+  /* 연보라 color mesh — Liquid Glass의 전제조건: glass가 굴절시킬 색이 있어야 함
+     background-attachment:fixed = 스크롤 시 glass 내 색이 실시간 변화 */
+  background-color: var(--bg-base);
+  background-image: radial-gradient(ellipse 70% 60% at 8% -8%,
+  rgba(168, 156, 200, 0.28) 0%, rgba(124, 111, 160, 0.12) 40%, transparent 68%),
+  radial-gradient(ellipse 50% 48% at 96% 4%,
+      rgba(205, 199, 226, 0.35) 0%, rgba(168, 156, 200, 0.14) 44%, transparent 68%),
+  radial-gradient(ellipse 55% 50% at 98% 98%,
+      rgba(124, 111, 160, 0.20) 0%, rgba(168, 156, 200, 0.08) 48%, transparent 70%),
+  radial-gradient(ellipse 60% 52% at 2% 100%,
+      rgba(205, 199, 226, 0.22) 0%, transparent 65%),
+  radial-gradient(ellipse 38% 38% at 50% 52%,
+      rgba(124, 111, 160, 0.07) 0%, transparent 60%);
   background-attachment: fixed;
 }
 
@@ -243,19 +268,30 @@ img {
 
 /* ── Glass 유틸리티 ───────────────────────────────────────────── */
 .glass {
+  /* 4-layer Liquid Glass — blur + fill + 방향성 border + inset glow */
+  backdrop-filter: blur(28px) saturate(160%) brightness(1.04);
+  -webkit-backdrop-filter: blur(28px) saturate(160%) brightness(1.04);
   background: var(--glass-bg);
-  backdrop-filter: var(--blur);
-  -webkit-backdrop-filter: var(--blur);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
+  border-style: solid;
+  border-width: 1px;
+  border-top-color: var(--glass-border);
+  border-left-color: var(--glass-border-subtle);
+  border-right-color: var(--glass-border-subtle);
+  border-bottom-color: rgba(255, 255, 255, 0.10);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82), var(--glass-shadow);
 }
 
 .glass-deep {
+  backdrop-filter: blur(36px) saturate(170%) brightness(1.05);
+  -webkit-backdrop-filter: blur(36px) saturate(170%) brightness(1.05);
   background: var(--glass-bg-deep);
-  backdrop-filter: var(--blur-lg);
-  -webkit-backdrop-filter: var(--blur-lg);
-  border: 1px solid var(--glass-border-subtle);
-  box-shadow: var(--glass-shadow-lg);
+  border-style: solid;
+  border-width: 1px;
+  border-top-color: var(--glass-border);
+  border-left-color: var(--glass-border-subtle);
+  border-right-color: rgba(255, 255, 255, 0.28);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78), var(--glass-shadow-lg);
 }
 
 /* ── 애니메이션 ───────────────────────────────────────────────── */
@@ -323,7 +359,7 @@ img {
 .prose h2 {
   font-size: var(--text-xl);
   padding-bottom: 0.5em;
-  border-bottom: 1px solid var(--clr-silver-30);
+  border-bottom: 1px solid var(--clr-silver-25);
 }
 
 .prose h3 {
@@ -344,10 +380,10 @@ img {
 }
 
 .prose blockquote {
-  border-left: 2px solid var(--c-rose);
+  border-left: 2px solid rgba(168, 156, 200, 0.60);
   margin: 2em 0;
   padding: 1em 1.5em;
-  background: var(--clr-rose-12);
+  background: rgba(124, 111, 160, 0.07);
   backdrop-filter: blur(4px);
   border-radius: 0 var(--radius) var(--radius) 0;
   color: var(--text-secondary);
@@ -361,11 +397,11 @@ img {
 .prose code:not(pre code) {
   font-family: var(--font-mono);
   font-size: 0.85em;
-  background: var(--clr-slate-10);
-  border: 1px solid var(--clr-slate-20);
+  background: rgba(124, 111, 160, 0.07);
+  border: 1px solid rgba(168, 156, 200, 0.24);
   padding: 0.15em 0.45em;
   border-radius: 6px;
-  color: var(--c-slate);
+  color: var(--c-vio);
 }
 
 .prose pre {
@@ -400,12 +436,12 @@ img {
 }
 
 .prose li::marker {
-  color: var(--c-rose);
+  color: var(--c-vio);
 }
 
 .prose hr {
   border: none;
-  border-top: 1px solid var(--clr-silver-35);
+  border-top: 1px solid var(--clr-silver-25);
   margin: 3em 0;
 }
 
@@ -441,7 +477,7 @@ img {
 }
 
 .prose a {
-  color: var(--c-slate);
+  color: var(--c-vio);
   text-decoration: underline;
   text-decoration-color: var(--clr-slate-40);
   text-underline-offset: 3px;
@@ -449,5 +485,5 @@ img {
 }
 
 .prose a:hover {
-  text-decoration-color: var(--c-slate);
+  text-decoration-color: var(--c-vio);
 }

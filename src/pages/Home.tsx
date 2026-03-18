@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom'
-import {posts, CATEGORIES} from '../posts'
+import {posts, CATEGORIES} from '../assets/data/posts.ts'
 import PostCard from '../components/PostCard'
 import styles from '../styles/pages/Home.module.css'
 

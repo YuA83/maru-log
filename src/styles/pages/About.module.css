@@ -8,57 +8,45 @@
   justify-content: center;
 }
 
+/* ── 메인 카드 ── */
 .card {
   position: relative;
   width: 100%;
   max-width: var(--max-content);
   padding: 3rem;
   border-radius: var(--radius-xl);
-  backdrop-filter: blur(40px) saturate(180%) brightness(1.06);
-  -webkit-backdrop-filter: blur(40px) saturate(180%) brightness(1.06);
-  background: rgba(255, 255, 255, 0.20);
-  border: 1px solid transparent;
-  border-top-color: rgba(255, 255, 255, 0.90);
-  border-left-color: rgba(255, 255, 255, 0.44);
-  border-right-color: rgba(255, 255, 255, 0.32);
-  border-bottom-color: rgba(255, 255, 255, 0.10);
-  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.80), var(--glass-shadow-lg);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: var(--glass-shadow);
   overflow: hidden;
 }
 
-/* 상단 광택 라인 */
+/* 상단 accent 라인 */
 .card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
+  height: 2px;
   background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.95) 50%,
+      var(--c-vio-l) 30%,
+      var(--c-vio) 50%,
+      var(--c-vio-l) 70%,
       transparent
   );
+  opacity: 0.50;
   pointer-events: none;
 }
 
-/* 배경 orb */
+/* orb 제거 */
 .orb {
-  position: absolute;
-  top: -80px;
-  right: -80px;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle,
-  rgba(168, 156, 200, 0.28) 0%, rgba(124, 111, 160, 0.10) 45%, transparent 70%
-  );
-  filter: blur(30px);
-  pointer-events: none;
+  display: none;
 }
 
-/* 아바타 */
+/* ── 아바타 ── */
 .avatar {
   width: 52px;
   height: 52px;
@@ -66,42 +54,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.4rem;
   margin-bottom: 1.5rem;
-  overflow: hidden;
-  /* tiny liquid glass lens */
-  backdrop-filter: blur(20px) saturate(220%) brightness(1.10);
-  -webkit-backdrop-filter: blur(20px) saturate(220%) brightness(1.10);
-  background: rgba(255, 255, 255, 0.24);
-  background-image: radial-gradient(
-      circle at 38% 32%,
-      rgba(168, 156, 200, 0.52) 0%,
-      rgba(124, 111, 160, 0.22) 48%,
-      transparent 70%
-  );
-  border: 1px solid transparent;
-  border-top-color: rgba(255, 255, 255, 0.88);
-  border-bottom-color: rgba(255, 255, 255, 0.12);
-  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.78), 0 10px 24px var(--clr-slate-20);
+  background: linear-gradient(135deg, var(--c-vio-xl) 0%, var(--c-vio-l) 100%);
+  border: 1px solid rgba(124, 111, 160, 0.15);
+  box-shadow: 0 4px 16px rgba(124, 111, 160, 0.14);
   transition: transform var(--transition-slow), box-shadow var(--transition);
   cursor: default;
+  user-select: none;
 }
 
 .avatar:hover {
-  transform: scale(1.10) rotate(-5deg);
-  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.84), 0 14px 34px var(--clr-slate-25);
+  transform: scale(1.08) rotate(-4deg);
+  box-shadow: 0 8px 24px rgba(124, 111, 160, 0.20);
 }
 
-/* 헤더 */
+/* ── 헤더 ── */
 .header {
   margin-bottom: 2rem;
 }
 
 .eyebrow {
   font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0.15em;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--c-vio);
   opacity: 0.80;
@@ -120,6 +96,224 @@
   position: relative;
 }
 
+/* ================================================================
+   문서 버튼 그룹 (경력기술서 / 자기소개서)
+   ================================================================ */
+.docButtons {
+  display: flex;
+  gap: 0.65rem;
+  margin: 0 0 2rem;
+  flex-wrap: wrap;
+}
+
+/* 개별 버튼 */
+.docBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 180px;
+  padding: 0.9rem 1rem 0.9rem 1rem;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--transition),
+  border-color var(--transition),
+  transform var(--transition),
+  box-shadow var(--transition);
+  box-shadow: var(--glass-shadow-sm);
+}
+
+.docBtn:hover {
+  background: #f3f1f9;
+  border-color: rgba(124, 111, 160, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(124, 111, 160, 0.12);
+}
+
+.docBtn:active {
+  transform: translateY(0);
+  box-shadow: var(--glass-shadow-sm);
+}
+
+/* 이모지 아이콘 */
+.docBtnEmoji {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* 텍스트 영역 */
+.docBtnText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.docBtnLabel {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.docBtnSub {
+  font-size: var(--text-xs);
+  color: var(--text-ghost);
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+}
+
+/* 화살표 */
+.docBtnArrow {
+  font-size: 1.1rem;
+  color: var(--text-ghost);
+  flex-shrink: 0;
+  transition: transform var(--transition), color var(--transition);
+}
+
+.docBtn:hover .docBtnArrow {
+  transform: translateX(3px);
+  color: var(--c-vio);
+}
+
+/* ================================================================
+   기술스택 그리드
+   ================================================================ */
+.techGrid {
+  /* prose 내 ul/ol 기본 스타일 무력화 */
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 2rem;
+  /* 아이콘 카드 그리드: 최소 80px, 자동 채움 */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 0.6rem;
+}
+
+/* 개별 기술 카드 */
+.techCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.85rem 0.5rem 0.7rem;
+  background: #fafafa;
+  border: 1px solid #ebebeb;
+  border-radius: var(--radius);
+  cursor: default;
+  transition: background var(--transition),
+  border-color var(--transition),
+  transform var(--transition),
+  box-shadow var(--transition);
+  /* 텍스트 넘침 방지 */
+  min-width: 0;
+}
+
+.techCard:hover {
+  background: #f3f1f9; /* 연보라 tint */
+  border-color: rgba(124, 111, 160, 0.22);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(124, 111, 160, 0.10);
+}
+
+/* 기술 아이콘 이미지 */
+.techIcon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* 이미지 로드 실패 폴백 이모지 — 평소엔 숨김 */
+.techIconFallback {
+  display: none;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+/* 기술 이름 레이블 */
+.techName {
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: center;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.01em;
+}
+
+/* ================================================================
+   연락처 리스트
+   ================================================================ */
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid #ebebeb;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* 개별 연락처 행 */
+.contactItem {
+  display: flex;
+  align-items: stretch; /* ← center → stretch: 자식들이 행 전체 높이를 채움 */
+  border-top: 1px solid #ebebeb;
+  transition: background var(--transition);
+}
+
+.contactItem:first-child {
+  border-top: none;
+}
+
+.contactItem:hover {
+  background: #fafafa;
+}
+
+/* Key 레이블 — 고정 너비 */
+.contactKey {
+  flex-shrink: 0;
+  width: 90px;
+  padding: 0.72rem 1rem;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  border-right: 1px solid #ebebeb;
+  display: flex;
+  align-items: center;
+}
+
+/* Value — 링크 또는 텍스트 */
+.contactValue {
+  flex: 1;
+  padding: 0.72rem 1rem;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  word-break: break-all;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a.contactValue:hover {
+  color: var(--c-vio);
+  text-decoration: underline;
+  text-decoration-color: var(--clr-slate-30);
+  text-underline-offset: 3px;
+}
+
+/* ── 모바일 ── */
 @media (max-width: 640px) {
   .main {
     padding: 2.5rem 1.25rem 4rem;
@@ -131,5 +325,15 @@
 
   .title {
     font-size: var(--text-2xl);
+  }
+
+  .techGrid {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .contactKey {
+    width: 76px;
+    font-size: 9px;
   }
 }

@@ -1,14 +1,12 @@
 .footer {
   position: relative;
   margin-top: auto;
-  background: rgba(249, 248, 253, 0.68);
-  backdrop-filter: blur(24px) saturate(160%) brightness(1.04);
-  -webkit-backdrop-filter: blur(24px) saturate(160%) brightness(1.04);
-  border-top: 1px solid rgba(255, 255, 255, 0.58);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.70), 0 -4px 20px var(--clr-slate-5, var(--clr-slate-8));
+  background: #fafafa;
+  border-top: 1px solid #ebebeb;
+  box-shadow: none;
 }
 
-/* 상단 광택 라인 */
+/* 상단 accent 라인 — 연보라 1px */
 .topLine {
   position: absolute;
   top: 0;
@@ -16,15 +14,12 @@
   right: 0;
   height: 1px;
   background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(168, 156, 200, 0.45) 22%,
-      rgba(124, 111, 160, 0.42) 50%,
-      rgba(205, 199, 226, 0.38) 78%,
-      transparent 100%
+    90deg,
+    transparent 0%,
+    rgba(124, 111, 160, 0.25) 30%,
+    rgba(169, 156, 200, 0.20) 70%,
+    transparent 100%
   );
-  background-size: 300% 100%;
-  animation: lineFlow 10s linear infinite;
   pointer-events: none;
 }
 
@@ -46,25 +41,19 @@
   flex-shrink: 0;
 }
 
+/* gem — 작은 accent 사각형 */
 .gem {
   display: inline-block;
   width: 14px;
   height: 14px;
   border-radius: 4px;
   flex-shrink: 0;
-  backdrop-filter: blur(10px) saturate(180%);
-  -webkit-backdrop-filter: blur(10px) saturate(180%);
-  background: rgba(255, 255, 255, 0.22);
-  background-image: radial-gradient(
-      circle at 35% 35%,
-      rgba(168, 156, 200, 0.42) 0%,
-      rgba(124, 111, 160, 0.16) 55%,
-      transparent 75%
+  background: linear-gradient(
+    135deg,
+    var(--c-vio-l) 0%,
+    var(--c-vio) 100%
   );
-  border: 1px solid transparent;
-  border-top-color: rgba(255, 255, 255, 0.72);
-  border-bottom-color: rgba(255, 255, 255, 0.10);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.62);
+  opacity: 0.75;
 }
 
 .brandText {
@@ -114,14 +103,5 @@
     order: 3;
     width: 100%;
     margin: 0;
-  }
-}
-
-@keyframes lineFlow {
-  from {
-    background-position: 0% 0
-  }
-  to {
-    background-position: 300% 0
   }
 }

@@ -49,7 +49,7 @@ export default function Header() {
                 <path d="M1 12L5 7.5M5 7.5L9.5 1L12.5 4L5 7.5ZM1 12H3.5L5 7.5L1 12Z"
                       stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              <span>Write</span>
+              {/*<span>Write</span>*/}
             </Link>
           </div>
         </div>

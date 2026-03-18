@@ -1,6 +1,6 @@
 import {useMemo} from 'react'
 import {useSearchParams} from 'react-router-dom'
-import {posts, CATEGORIES, getCategoryLabel, getParentId} from '../posts'
+import {posts, CATEGORIES, getCategoryLabel, getParentId} from '../assets/data/posts.ts'
 import PostCard from '../components/PostCard'
 import CategorySidebar from '../components/CategorySidebar'
 import CategoryFilter from '../components/CategoryFilter'
@@ -78,7 +78,7 @@ export default function PostList() {
           ) : (
               /* 빈 상태 */
               <div className={styles.empty}>
-                <p className={styles.emptyIcon}>◈</p>
+                <p className={styles.emptyIcon}></p>
                 <p className={styles.emptyText}>아직 포스트가 없습니다.</p>
               </div>
           )}

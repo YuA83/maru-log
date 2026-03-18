@@ -14,12 +14,13 @@
   min-width: 0;
 }
 
+/* 페이지 헤더 — 하단 구분선 */
 .header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--clr-silver-25);
+  border-bottom: 1px solid #ebebeb;
   margin-bottom: 1.25rem;
 }
 
@@ -33,7 +34,7 @@
 
 .count {
   font-size: var(--text-xs);
-  color: var(--text-muted);
+  color: var(--text-ghost);
   letter-spacing: 0.01em;
 }
 
@@ -43,6 +44,7 @@
   gap: 0.55rem;
 }
 
+/* 빈 상태 */
 .empty {
   padding: 5rem 0;
   text-align: center;

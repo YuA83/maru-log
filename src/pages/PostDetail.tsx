@@ -6,7 +6,7 @@ import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import {format} from 'date-fns'
 import {ko} from 'date-fns/locale'
-import {posts, findCategory, getCategoryLabel} from '../posts'
+import {posts, findCategory, getCategoryLabel} from '../assets/data/posts.ts'
 import {usePost} from '../hooks/usePost.ts'
 import styles from '../styles/pages/PostDetail.module.css'
 
@@ -38,7 +38,7 @@ export default function PostDetail() {
 
 // ─── 실제 컨텐츠 렌더링 (분리하여 조건부 훅 호출 문제 방지) ───
 
-import type {PostMeta} from '../posts'
+import type {PostMeta} from '../assets/data/posts.ts'
 
 interface PostContentProps {
   slug: string

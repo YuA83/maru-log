@@ -1,8 +1,8 @@
 import {Link} from 'react-router-dom'
 import {format} from 'date-fns'
 import {ko} from 'date-fns/locale'
-import type {PostMeta} from '../posts'
-import {findCategory} from '../posts'
+import type {PostMeta} from '../assets/data/posts.ts'
+import {findCategory} from '../assets/data/posts.ts'
 import styles from '../styles/components/PostCard.module.css'
 
 interface PostCardProps {

@@ -1,5 +1,5 @@
 import {useSearchParams, Link} from 'react-router-dom'
-import {CATEGORIES, posts} from '../posts'
+import {CATEGORIES, posts} from '../assets/data/posts.ts'
 import styles from '../styles/components/CategoryFilter.module.css'
 
 /**

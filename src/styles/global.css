@@ -498,3 +498,98 @@ img {
 .prose a:hover {
   text-decoration-color: var(--c-vio);
 }
+
+/* ================================================================
+   다크모드 — [data-theme="dark"] 로 적용
+   <html data-theme="dark"> 일 때 override
+   ================================================================ */
+[data-theme="dark"] {
+  /* 배경 */
+  --bg-base: #0f0f13;
+  --bg-mid: #16161d;
+  --bg-deep: #1c1c26;
+
+  /* 헤더 */
+  --clr-header-base: rgba(15, 15, 19, 0.82);
+  --clr-header-scrolled: rgba(15, 15, 19, 0.96);
+
+  /* 텍스트 */
+  --text-primary: #f0eef8;
+  --text-secondary: #b8b4cc;
+  --text-muted: #7a7690;
+  --text-ghost: #4a4760;
+
+  /* accent — 다크에서 약간 밝게 */
+  --c-vio: #9d92c4;
+  --c-vio-m: #c4bcd8;
+  --c-vio-l: #ddd8ee;
+  --c-vio-xl: #2a2640;
+  --c-vio-2xl: #1e1c2e;
+
+  /* Glass 토큰 — 어두운 배경용 */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-bg-hover: rgba(255, 255, 255, 0.09);
+  --glass-bg-deep: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-subtle: rgba(255, 255, 255, 0.04);
+  --glass-shadow: 0 2px 12px rgba(0, 0, 0, 0.30), 0 1px 4px rgba(0, 0, 0, 0.20);
+  --glass-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.40), 0 2px 8px rgba(0, 0, 0, 0.25);
+  --glass-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+/* 다크모드 body 배경 */
+[data-theme="dark"] body,
+[data-theme="dark"] {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+}
+
+/* 다크모드 스크롤바 */
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* 다크모드 흰 카드들 — 어두운 배경으로 */
+[data-theme="dark"] .prose pre {
+  background: #0d0d14;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .prose code:not(pre code) {
+  background: rgba(157, 146, 196, 0.12);
+  border-color: rgba(157, 146, 196, 0.20);
+}
+
+[data-theme="dark"] .prose blockquote {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme="dark"] .prose h2 {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .prose hr {
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .prose table {
+  background: var(--bg-mid);
+}
+
+[data-theme="dark"] .prose th {
+  background: var(--bg-deep);
+}
+
+[data-theme="dark"] .prose th,
+[data-theme="dark"] .prose td {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* 다크모드 전환 애니메이션 */
+*, *::before, *::after {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.15s ease;
+}

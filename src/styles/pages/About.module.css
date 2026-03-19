@@ -256,7 +256,7 @@
   color: var(--text-muted);
   text-transform: uppercase;
   border-right: 1px solid var(--border-muted);
-  background: var(--bg-subtle);
+  /*background: var(--bg-subtle);*/
   display: flex;
   align-items: center;
 }
@@ -300,4 +300,31 @@ a.contactValue:hover {
     width: 76px;
     font-size: 9px;
   }
+}
+
+/* ── 프로필 뱃지 (B안 — 둥근 뱃지) ── */
+.profileMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 1.75rem;
+}
+
+.profileMetaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  padding: 0.28em 0.75em;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-muted);
+  background: var(--bg-subtle);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.profileMetaIcon {
+  font-size: 0.8rem;
+  line-height: 1;
+  flex-shrink: 0;
 }

@@ -25,6 +25,16 @@ const About = () => {
             <div className={ `prose ${ styles.prose }` }>
               <p>{ aboutData.intro }</p>
 
+              {/* ── 프로필 뱃지 (B안 — 둥근 뱃지) ── */ }
+              <div className={ styles.profileMeta }>
+                { aboutData.profile.map((item, i) => (
+                    <span key={ i } className={ styles.profileMetaItem }>
+                    <span className={ styles.profileMetaIcon } aria-hidden="true">{ item.icon }</span>
+                      { item.text }
+                  </span>
+                )) }
+              </div>
+
               {/* ── 문서 버튼 그룹 ── */ }
               <div className={ styles.docButtons }>
                 <button

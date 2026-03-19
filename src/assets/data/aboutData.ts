@@ -18,6 +18,13 @@ const aboutData = {
       "이 공간은 개발과 일상에서 배운 것들을 기록하는 개인 블로그입니다.\n" +
       "글을 쓰며 생각을 정리하고, 그 과정에서 누군가에게도 도움이 되길 바랍니다.",
 
+  profile: [
+    { icon: '🎂', text: '1998년생' },
+    { icon: '📍', text: '인천' },
+    { icon: '💼', text: '백엔드 개발자' },
+    { icon: '📆', text: '2021.09 ~' },
+  ],
+
   techList: [
     { name: "Java", icon: "Java.png" },
     { name: "JavaScript", icon: "JavaScript.png" },
@@ -37,6 +44,7 @@ const aboutData = {
   contact: [
     { k: "email", v: "yua._.83@icloud.com" },
     { k: "git", v: "https://github.com/YuA83" },
+    { k: "linkedin", v: "https://www.linkedin.com/in/yua83" },
   ],
 
   /* ── 경력 기술서 ── */
@@ -53,20 +61,8 @@ const aboutData = {
   /* ── 자기소개서 ── */
   coverLetter: [
     {
-      title: "성장 과정",
-      content: "내용을 입력하세요.\n두 번째 줄.",
-    },
-    {
-      title: "지원 동기",
-      content: "내용을 입력하세요.",
-    },
-    {
-      title: "직무 역량",
-      content: "내용을 입력하세요.",
-    },
-    {
-      title: "입사 후 포부",
-      content: "내용을 입력하세요.",
+      title: "",
+      content: "",
     },
   ] as CoverLetterSection[],
 }

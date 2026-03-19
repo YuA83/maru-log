@@ -1,7 +1,7 @@
 import { useEffect, useCallback } from 'react'
 import styles from '../styles/components/Modal.module.css'
 import aboutData from '../assets/data/aboutData'
-import type { ResumeProject, CoverLetterSection } from '../assets/data/aboutData'
+import type { ResumeProject } from '../assets/data/aboutData'
 
 export type DocumentType = 'resume' | 'coverLetter' | null
 
@@ -50,37 +50,30 @@ const ResumeContent = () => (
     </div>
 )
 
-/* ── 자기소개서 렌더러 ── */
-const CoverLetterContent = () => (
-    <div className={ styles.coverList }>
-      { aboutData.coverLetter.map((section: CoverLetterSection, i: number) => (
-          <div key={ i } className={ styles.coverSection }>
+/* ── 자기소개서 — 메일 문의 안내 ── */
+const CoverLetterContent = () => {
+  const email = aboutData.contact.find((c) => c.k === 'email')?.v ?? ''
 
-            {/* 문단 제목 */ }
-            <h3 className={ styles.coverTitle }>
-              <span className={ styles.coverTitleIndex }>{ String(i + 1).padStart(2, '0') }</span>
-              { section.title }
-            </h3>
-
-            {/* 본문 — \n을 <br>로 변환 */ }
-            <p className={ styles.coverContent }>
-              { section.content.split('\n').map((line, j, arr) => (
-                  <span key={ j }>
-              { line }
-                    { j < arr.length - 1 && <br/> }
-            </span>
-              )) }
-            </p>
-
-            {/* 문단 구분선 — 마지막엔 없음 */ }
-            { i < aboutData.coverLetter.length - 1 && (
-                <hr className={ styles.coverDivider }/>
-            ) }
-
-          </div>
-      )) }
-    </div>
-)
+  return (
+      <div className={ styles.contactInquiry }>
+        <div className={ styles.contactInquiryIcon } aria-hidden="true">✉️</div>
+        <h3 className={ styles.contactInquiryTitle }>메일 부탁드립니다</h3>
+        <p className={ styles.contactInquiryDesc }>
+          자기소개서는 메일로 요청 주시면 전달드리겠습니다.<br/>
+          관심 가져주셔서 감사합니다 🙇🏻‍♀️<br/>
+        </p>
+        <a
+            href={ `mailto:${ email }` }
+            className={ styles.contactInquiryBtn }
+        >
+          { email } 으로 메일 보내기 →
+        </a>
+        <p className={ styles.contactInquiryNote }>
+          * 회사명과 채용 포지션을 함께 남겨주시면 감사하겠습니다.
+        </p>
+      </div>
+  )
+}
 
 /* ── 메인 컴포넌트 ── */
 export default function DocumentModal({ type, onClose }: Props) {

@@ -1,7 +1,3 @@
-/* ================================================================
-   Home — Editorial Magazine Layout
-   ================================================================ */
-
 .main {
   flex: 1;
   max-width: var(--max-wide);
@@ -10,22 +6,19 @@
   width: 100%;
 }
 
-/* ================================================================
-   히어로 — 타이포 + 인덱스 2단
-   ================================================================ */
+/* ── 히어로 ── */
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
   padding: 4rem 0 0;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--border-muted);
   margin-bottom: 3rem;
 }
 
-/* ── 좌: 타이포 블록 ── */
 .heroLeft {
   padding: 2rem 3rem 3.5rem 0;
-  border-right: 1px solid #e0e0e0;
+  border-right: 1px solid var(--border-muted);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -51,7 +44,6 @@
   margin: 0;
 }
 
-/* em — 이탤릭 아웃라인 텍스트 */
 .heroTitle em {
   font-style: italic;
   font-weight: 300;
@@ -59,7 +51,6 @@
   -webkit-text-stroke: 1.5px var(--text-primary);
 }
 
-/* ── 우: 카테고리 인덱스 ── */
 .heroIndex {
   padding: 2rem 0 3.5rem 3rem;
   display: flex;
@@ -85,11 +76,11 @@
 }
 
 .heroIndexItem {
-  border-top: 1px solid #ebebeb;
+  border-top: 1px solid var(--border-muted);
 }
 
 .heroIndexItem:last-child {
-  border-bottom: 1px solid #ebebeb;
+  border-bottom: 1px solid var(--border-muted);
 }
 
 .heroIndexLink {
@@ -160,9 +151,7 @@
   opacity: 1;
 }
 
-/* ================================================================
-   섹션 공통 바
-   ================================================================ */
+/* ── 섹션 바 ── */
 .sectionBar {
   display: flex;
   align-items: center;
@@ -182,7 +171,7 @@
 .sectionBarLine {
   flex: 1;
   height: 1px;
-  background: #e8e8e8;
+  background: var(--border-muted);
 }
 
 .sectionBarLink {
@@ -200,35 +189,31 @@
   opacity: 1;
 }
 
-/* ================================================================
-   피처드 섹션 — 큰 카드 1 + 서브 3
-   ================================================================ */
+/* ── 피처드 ── */
 .featuredSection {
   margin-bottom: 4rem;
 }
 
-/* 2단 그리드 — 좌 3 : 우 2 */
 .featuredGrid {
   display: grid;
   grid-template-columns: 3fr 2fr;
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
-/* ── 메인 피처드 카드 ── */
 .featuredMain {
   display: flex;
   flex-direction: column;
   padding: 2.25rem 2.5rem;
-  background: #ffffff;
+  background: var(--bg-card);
   text-decoration: none;
-  border-right: 1px solid #e8e8e8;
+  border-right: 1px solid var(--border);
   transition: background var(--transition);
 }
 
 .featuredMain:hover {
-  background: #fafafa;
+  background: var(--bg-hover);
 }
 
 .featuredMain:hover .featuredMainTitle {
@@ -253,8 +238,8 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--c-vio);
-  background: rgba(124, 111, 160, 0.08);
-  border: 1px solid rgba(124, 111, 160, 0.18);
+  background: rgba(124, 111, 160, 0.10);
+  border: 1px solid rgba(124, 111, 160, 0.20);
   padding: 0.18em 0.6em;
   border-radius: var(--radius-pill);
 }
@@ -297,11 +282,10 @@
   transition: color var(--transition), letter-spacing var(--transition);
 }
 
-/* ── 서브 카드 3개 ── */
 .featuredSub {
   display: flex;
   flex-direction: column;
-  background: #fafafa;
+  background: var(--bg-subtle);
 }
 
 .subCard {
@@ -311,7 +295,7 @@
   justify-content: space-between;
   padding: 1.25rem 1.5rem;
   text-decoration: none;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--border);
   transition: background var(--transition);
 }
 
@@ -320,7 +304,7 @@
 }
 
 .subCard:hover {
-  background: #f0eefa;
+  background: var(--bg-hover-vio);
 }
 
 .subCard:hover .subCardTitle {
@@ -363,9 +347,7 @@
   overflow: hidden;
 }
 
-/* ================================================================
-   하단 그리드 — 3열
-   ================================================================ */
+/* ── 하단 그리드 ── */
 .gridSection {
   margin-bottom: 2rem;
 }
@@ -376,9 +358,7 @@
   gap: 0.75rem;
 }
 
-/* ================================================================
-   모바일
-   ================================================================ */
+/* ── 모바일 ── */
 @media (max-width: 860px) {
   .hero {
     grid-template-columns: 1fr;
@@ -388,7 +368,7 @@
   .heroLeft {
     padding: 0 0 2rem;
     border-right: none;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-muted);
   }
 
   .heroTitle {
@@ -405,7 +385,7 @@
 
   .featuredMain {
     border-right: none;
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: 1px solid var(--border);
   }
 
   .postGrid {
@@ -430,7 +410,6 @@
     grid-template-columns: 1fr;
   }
 
-  /* 모바일: 서브카드 숨김 */
   .featuredSub {
     display: none;
   }

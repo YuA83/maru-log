@@ -1,13 +1,9 @@
-/* ================================================================
-   DocumentModal — 오버레이 + 패널 + 경력기술서 + 자기소개서
-   ================================================================ */
-
 /* ── 오버레이 ── */
 .overlay {
   position: fixed;
   inset: 0;
   z-index: 500;
-  background: rgba(0, 0, 0, 0.32);
+  background: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   display: flex;
@@ -34,11 +30,10 @@
   max-height: calc(100vh - 3rem);
   display: flex;
   flex-direction: column;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-xl);
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.16),
-  0 8px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--glass-shadow-lg);
   animation: panelIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   overflow: hidden;
 }
@@ -54,7 +49,7 @@
   }
 }
 
-/* 패널 상단 accent 라인 */
+/* 상단 accent 라인 */
 .panel::before {
   content: '';
   position: absolute;
@@ -62,14 +57,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(
-      90deg,
-      transparent,
-      var(--c-vio-l) 30%,
-      var(--c-vio) 50%,
-      var(--c-vio-l) 70%,
-      transparent
-  );
+  background: linear-gradient(90deg, transparent, var(--c-vio-l) 30%, var(--c-vio) 50%, var(--c-vio-l) 70%, transparent);
   opacity: 0.55;
   pointer-events: none;
   z-index: 1;
@@ -81,7 +69,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1.1rem 1.25rem 1rem;
-  border-bottom: 1px solid #ebebeb;
+  border-bottom: 1px solid var(--border-muted);
   flex-shrink: 0;
 }
 
@@ -106,7 +94,6 @@
   margin: 0;
 }
 
-/* X 닫기 버튼 */
 .closeBtn {
   display: flex;
   align-items: center;
@@ -124,17 +111,17 @@
 }
 
 .closeBtn:hover {
-  background: #f5f5f7;
+  background: var(--bg-hover);
   color: var(--text-primary);
 }
 
-/* ── 본문 스크롤 영역 ── */
+/* ── 본문 ── */
 .body {
   flex: 1;
   overflow-y: auto;
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: #ddd transparent;
+  scrollbar-color: var(--border-muted) transparent;
 }
 
 .body::-webkit-scrollbar {
@@ -146,7 +133,7 @@
 }
 
 .body::-webkit-scrollbar-thumb {
-  background: #ddd;
+  background: var(--border-muted);
   border-radius: 10px;
 }
 
@@ -160,9 +147,8 @@
   gap: 1rem;
 }
 
-/* 프로젝트 카드 */
 .resumeCard {
-  border: 1px solid #ebebeb;
+  border: 1px solid var(--border-muted);
   border-radius: var(--radius);
   overflow: hidden;
   transition: box-shadow var(--transition);
@@ -172,15 +158,14 @@
   box-shadow: var(--glass-shadow);
 }
 
-/* 카드 헤더 — 프로젝트명 + 기간 */
 .resumeHeader {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
   padding: 0.85rem 1rem 0.7rem;
-  background: #fafafa;
-  border-bottom: 1px solid #ebebeb;
+  background: var(--bg-subtle);
+  border-bottom: 1px solid var(--border-muted);
   flex-wrap: wrap;
 }
 
@@ -201,24 +186,22 @@
   flex-shrink: 0;
 }
 
-/* 메타 테이블 (dl > div > dt + dd) */
 .resumeMeta {
   display: flex;
   flex-direction: column;
-  gap: 0; /* 행 사이 구분선으로 구분 */
+  gap: 0;
 }
 
 .resumeRow {
   display: flex;
   align-items: stretch;
-  border-top: 1px solid #f3f3f3;
+  border-top: 1px solid var(--border-faint);
 }
 
 .resumeRow:first-child {
   border-top: none;
 }
 
-/* Key 셀 */
 .resumeKey {
   flex-shrink: 0;
   width: 72px;
@@ -227,22 +210,19 @@
   font-weight: 600;
   color: var(--text-muted);
   letter-spacing: 0.03em;
-  background: #fafafa;
-  border-right: 1px solid #f0f0f0;
-  /* dl의 기본 margin 제거 */
+  background: var(--bg-subtle);
+  border-right: 1px solid var(--border-faint);
   margin: 0;
   display: flex;
   align-items: center;
 }
 
-/* Value 셀 */
 .resumeVal {
   flex: 1;
   padding: 0.6rem 0.85rem;
   font-size: var(--text-sm);
   color: var(--text-secondary);
   line-height: 1.6;
-  /* dl의 기본 margin 제거 */
   margin: 0;
   word-break: keep-all;
 }
@@ -254,12 +234,6 @@
   padding: 1.5rem 1.75rem 2rem;
 }
 
-/* 문단 래퍼 */
-.coverSection {
-  /* 구분선 + 내용 묶음 */
-}
-
-/* 문단 제목 */
 .coverTitle {
   display: flex;
   align-items: center;
@@ -272,7 +246,6 @@
   margin: 0 0 0.85rem;
 }
 
-/* 순번 태그 */
 .coverTitleIndex {
   display: inline-flex;
   align-items: center;
@@ -284,13 +257,12 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--c-vio);
-  background: rgba(124, 111, 160, 0.08);
-  border: 1px solid rgba(124, 111, 160, 0.20);
+  background: rgba(124, 111, 160, 0.10);
+  border: 1px solid rgba(124, 111, 160, 0.22);
   border-radius: var(--radius-pill);
   flex-shrink: 0;
 }
 
-/* 본문 */
 .coverContent {
   font-size: var(--text-base);
   color: var(--text-secondary);
@@ -299,10 +271,9 @@
   margin: 0;
 }
 
-/* 문단 구분선 */
 .coverDivider {
   border: none;
-  border-top: 1px solid #ebebeb;
+  border-top: 1px solid var(--border-muted);
   margin: 1.75rem 0;
 }
 
@@ -330,7 +301,6 @@
       transform: translateY(0);
     }
   }
-
   .resumeList {
     padding: 1rem 1rem 1.5rem;
   }

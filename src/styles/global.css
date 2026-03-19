@@ -1,18 +1,11 @@
 /* ================================================================
    CLEAN WHITE BLOG — Global Design System
-   ──────────────────────────────────────────────────────────────
-   화이트 기반 + 연보라 accent
-   팔레트 변경 시 :root 상단 원시값 블록만 수정
    ================================================================ */
 
-/* ── 폰트 로드 — MaruBuri (네이버 마루부리) ──
-   weight별로 따로 선언된 패뀌리를 font-weight 단일 패뀌리로 통합.
-   브라우저가 weight에 따라 자동으로 올바른 파일을 선택함.
-   font-display: swap — 폰트 로드 전 시스템 폰트로 먼저 렌더링.
-   ────────────────────────────────────────── */
+/* ── 폰트 로드 — MaruBuri ── */
 @font-face {
   font-family: 'MaruBuri';
-  font-weight: 200; /* ExtraLight */
+  font-weight: 200;
   font-display: swap;
   src: url('https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-ExtraLight.woff2') format('woff2'),
   url('https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-ExtraLight.woff') format('woff'),
@@ -21,7 +14,7 @@
 
 @font-face {
   font-family: 'MaruBuri';
-  font-weight: 300; /* Light */
+  font-weight: 300;
   font-display: swap;
   src: url('https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Light.woff2') format('woff2'),
   url('https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Light.woff') format('woff'),
@@ -30,7 +23,7 @@
 
 @font-face {
   font-family: 'MaruBuri';
-  font-weight: 400; /* Regular */
+  font-weight: 400;
   font-display: swap;
   src: url('https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.woff2') format('woff2'),
   url('https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.woff') format('woff'),
@@ -39,7 +32,7 @@
 
 @font-face {
   font-family: 'MaruBuri';
-  font-weight: 600; /* SemiBold */
+  font-weight: 600;
   font-display: swap;
   src: url('https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff2') format('woff2'),
   url('https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-SemiBold.woff') format('woff'),
@@ -48,31 +41,27 @@
 
 @font-face {
   font-family: 'MaruBuri';
-  font-weight: 700; /* Bold */
+  font-weight: 700;
   font-display: swap;
   src: url('https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Bold.woff2') format('woff2'),
   url('https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Bold.woff') format('woff'),
   url('https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Bold.ttf') format('truetype');
 }
 
+/* ================================================================
+   라이트 모드 변수
+   ================================================================ */
 :root {
-  /* ================================================================
-     ★ 팔레트 원시값 — accent 연보라
-     ================================================================ */
-
-  /* accent #7c6fa0 */
+  /* accent 연보라 RGB 채널 */
   --p-slate-r: 124;
   --p-slate-g: 111;
   --p-slate-b: 160;
-  /* mid lavender #a99cc8 */
   --p-silver-r: 169;
   --p-silver-g: 156;
   --p-silver-b: 200;
-  /* light lavender #cdc7e2 */
   --p-blush-r: 205;
   --p-blush-g: 199;
   --p-blush-b: 226;
-  /* 구 module.css 호환 매핑 */
   --p-peach-r: 169;
   --p-peach-g: 156;
   --p-peach-b: 200;
@@ -80,7 +69,7 @@
   --p-rose-g: 111;
   --p-rose-b: 160;
 
-  /* hex 단축 */
+  /* accent hex */
   --c-slate: #7c6fa0;
   --c-silver: #a99cc8;
   --c-blush: #cdc7e2;
@@ -92,20 +81,32 @@
   --c-vio-xl: #e8e5f2;
   --c-vio-2xl: #f3f1f9;
 
-  /* ── 배경 — 순백에 가까운 화이트 ── */
+  /* ── 배경 ── */
   --bg-base: #ffffff;
   --bg-mid: #fafafa;
   --bg-deep: #f5f5f7;
+  --bg-card: #ffffff; /* 카드 배경 */
+  --bg-subtle: #fafafa; /* 서브 배경 (푸터, resumeHeader 등) */
+  --bg-input: #f4f4f6; /* nav pill 배경 */
 
-  /* 헤더 배경 — 흰색 반투명 */
+  /* ── 테두리 ── */
+  --border: rgba(0, 0, 0, 0.08);
+  --border-subtle: rgba(0, 0, 0, 0.05);
+  --border-strong: rgba(0, 0, 0, 0.12);
+  --border-muted: #ebebeb; /* 구분선 */
+  --border-faint: #f0f0f0; /* 아주 연한 구분선 */
+  --border-input: #e8e8ec; /* input/태그 테두리 */
+
+  /* ── hover 배경 ── */
+  --bg-hover: #f5f5f7;
+  --bg-hover-vio: #f0eefa; /* 연보라 tint hover */
+  --bg-hover-white: rgba(255, 255, 255, 0.80);
+
+  /* ── 헤더 ── */
   --clr-header-base: rgba(255, 255, 255, 0.82);
   --clr-header-scrolled: rgba(255, 255, 255, 0.96);
 
-  /* ================================================================
-     시맨틱 컬러 토큰 — 모든 module.css는 이 변수만 참조
-     ================================================================ */
-
-  /* slate(accent) 계열 */
+  /* ── slate 토큰 ── */
   --clr-slate-5: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.05);
   --clr-slate-8: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.08);
   --clr-slate-10: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.10);
@@ -123,7 +124,7 @@
   --clr-slate-40: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.40);
   --clr-slate-50: rgba(var(--p-slate-r), var(--p-slate-g), var(--p-slate-b), 0.50);
 
-  /* silver(mid lavender) 계열 */
+  /* ── silver 토큰 ── */
   --clr-silver-10: rgba(var(--p-silver-r), var(--p-silver-g), var(--p-silver-b), 0.10);
   --clr-silver-18: rgba(var(--p-silver-r), var(--p-silver-g), var(--p-silver-b), 0.18);
   --clr-silver-20: rgba(var(--p-silver-r), var(--p-silver-g), var(--p-silver-b), 0.20);
@@ -132,7 +133,7 @@
   --clr-silver-35: rgba(var(--p-silver-r), var(--p-silver-g), var(--p-silver-b), 0.35);
   --clr-silver-45: rgba(var(--p-silver-r), var(--p-silver-g), var(--p-silver-b), 0.45);
 
-  /* rose/peach 계열 (구 호환) */
+  /* ── rose/peach 토큰 ── */
   --clr-rose-12: rgba(var(--p-rose-r), var(--p-rose-g), var(--p-rose-b), 0.12);
   --clr-rose-22: rgba(var(--p-rose-r), var(--p-rose-g), var(--p-rose-b), 0.22);
   --clr-rose-25: rgba(var(--p-rose-r), var(--p-rose-g), var(--p-rose-b), 0.25);
@@ -145,79 +146,142 @@
   --clr-peach-35: rgba(var(--p-peach-r), var(--p-peach-g), var(--p-peach-b), 0.35);
   --clr-peach-55: rgba(var(--p-peach-r), var(--p-peach-g), var(--p-peach-b), 0.55);
 
-  /* ================================================================
-     Glass 레이어 토큰 — 화이트 톤: 배경이 흰색이므로 fill을 더 낮춤
-     ================================================================ */
-
-  /* 흰 배경 위의 glass = 매우 연한 반투명 + 테두리로만 구분 */
+  /* ── Glass ── */
   --glass-bg: rgba(255, 255, 255, 0.70);
   --glass-bg-hover: rgba(255, 255, 255, 0.90);
   --glass-bg-deep: rgba(255, 255, 255, 0.55);
-
-  /* border — 화이트 톤에서는 중성 회색 계열로 낮춤 */
-  --glass-border: rgba(0, 0, 0, 0.07); /* 일반 테두리 */
-  --glass-border-subtle: rgba(0, 0, 0, 0.04); /* 서브 테두리 */
-  --glass-border-top: rgba(255, 255, 255, 1); /* 상단 광택 (흰 배경이라 불필요, fallback) */
-
-  /* shadows — 화이트 배경용: 연한 중성 그림자 */
+  --glass-border: rgba(0, 0, 0, 0.07);
+  --glass-border-subtle: rgba(0, 0, 0, 0.04);
+  --glass-border-top: rgba(255, 255, 255, 1);
   --glass-shadow: 0 2px 12px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.04);
   --glass-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.05);
   --glass-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
 
-  /* ================================================================
-     텍스트 — 진한 중성 다크 (가독성 우선)
-     ================================================================ */
+  /* ── 텍스트 ── */
   --text-primary: #111111;
   --text-secondary: #444444;
   --text-muted: #888888;
   --text-ghost: #bbbbbb;
 
-  /* ================================================================
-     폰트
-     ================================================================ */
+  /* ── 폰트 ── */
   --font-display: 'MaruBuri', 'Apple SD Gothic Neo', serif;
   --font-body: 'MaruBuri', 'Apple SD Gothic Neo', serif;
   --font-mono: 'Pretendard Variable', Pretendard, 'SF Mono', ui-monospace, monospace;
 
-  /* ================================================================
-     타이포 스케일
-     ================================================================ */
-  --text-xs: 0.625rem; /* 10px */
-  --text-sm: 0.75rem; /* 12px */
-  --text-base: 0.875rem; /* 14px */
-  --text-md: 0.9375rem; /* 15px */
-  --text-lg: 1.0625rem; /* 17px */
-  --text-xl: 1.25rem; /* 20px */
-  --text-2xl: 1.625rem; /* 26px */
-  --text-3xl: 2.125rem; /* 34px */
-  --text-4xl: 2.75rem; /* 44px */
+  /* ── 타이포 스케일 ── */
+  --text-xs: 0.625rem;
+  --text-sm: 0.75rem;
+  --text-base: 0.875rem;
+  --text-md: 0.9375rem;
+  --text-lg: 1.0625rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.625rem;
+  --text-3xl: 2.125rem;
+  --text-4xl: 2.75rem;
 
-  /* ================================================================
-     Radius
-     ================================================================ */
+  /* ── Radius ── */
   --radius-sm: 6px;
   --radius: 10px;
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-pill: 999px;
 
-  /* ================================================================
-     레이아웃 & 모션
-     ================================================================ */
+  /* ── 레이아웃 & 모션 ── */
   --max-content: 700px;
   --max-wide: 1120px;
-
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition: 220ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
-
   --blur-sm: blur(8px);
   --blur: blur(20px);
   --blur-lg: blur(28px);
   --blur-xl: blur(44px);
 }
 
-/* ── Reset ── */
+/* ================================================================
+   다크모드 변수 — base #2b2b2b
+   ================================================================ */
+[data-theme="dark"] {
+  /* ── accent — 채도 낮춘 뮤트 라벤더 ── */
+  --c-vio: #8b82aa; /* 원래 #7c6fa0에서 채도 낮춤 */
+  --c-vio-m: #a89ec0;
+  --c-vio-l: #c4bed8;
+  --c-vio-xl: #38344a;
+  --c-vio-2xl: #2e2a3d;
+
+  /* ── 배경 — #2b2b2b 베이스 ── */
+  --bg-base: #2b2b2b;
+  --bg-mid: #323232;
+  --bg-deep: #3a3a3a;
+  --bg-card: #323232;
+  --bg-subtle: #303030;
+  --bg-input: #3a3a3a;
+
+  /* ── 테두리 ── */
+  --border: rgba(255, 255, 255, 0.09);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --border-muted: rgba(255, 255, 255, 0.08);
+  --border-faint: rgba(255, 255, 255, 0.05);
+  --border-input: rgba(255, 255, 255, 0.10);
+
+  /* ── hover 배경 ── */
+  --bg-hover: #3d3d3d;
+  --bg-hover-vio: #38344a;
+  --bg-hover-white: rgba(255, 255, 255, 0.06);
+
+  /* ── 헤더 ── */
+  --clr-header-base: rgba(43, 43, 43, 0.88);
+  --clr-header-scrolled: rgba(43, 43, 43, 0.97);
+
+  /* ── slate 토큰 재정의 — 다크에서 흰색 기반으로 ── */
+  --clr-slate-5: rgba(255, 255, 255, 0.05);
+  --clr-slate-8: rgba(255, 255, 255, 0.08);
+  --clr-slate-10: rgba(255, 255, 255, 0.10);
+  --clr-slate-12: rgba(255, 255, 255, 0.12);
+  --clr-slate-14: rgba(255, 255, 255, 0.14);
+  --clr-slate-15: rgba(255, 255, 255, 0.15);
+  --clr-slate-16: rgba(255, 255, 255, 0.16);
+  --clr-slate-18: rgba(255, 255, 255, 0.18);
+  --clr-slate-20: rgba(255, 255, 255, 0.20);
+  --clr-slate-22: rgba(255, 255, 255, 0.22);
+  --clr-slate-25: rgba(255, 255, 255, 0.25);
+  --clr-slate-28: rgba(255, 255, 255, 0.28);
+  --clr-slate-30: rgba(255, 255, 255, 0.30);
+  --clr-slate-35: rgba(255, 255, 255, 0.35);
+  --clr-slate-40: rgba(255, 255, 255, 0.40);
+  --clr-slate-50: rgba(255, 255, 255, 0.50);
+
+  /* ── silver 토큰 ── */
+  --clr-silver-10: rgba(200, 195, 220, 0.10);
+  --clr-silver-18: rgba(200, 195, 220, 0.18);
+  --clr-silver-20: rgba(200, 195, 220, 0.20);
+  --clr-silver-25: rgba(200, 195, 220, 0.25);
+  --clr-silver-30: rgba(200, 195, 220, 0.30);
+  --clr-silver-35: rgba(200, 195, 220, 0.35);
+  --clr-silver-45: rgba(200, 195, 220, 0.45);
+
+  /* ── Glass ── */
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-bg-hover: rgba(255, 255, 255, 0.08);
+  --glass-bg-deep: rgba(255, 255, 255, 0.02);
+  --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-border-subtle: rgba(255, 255, 255, 0.05);
+  --glass-border-top: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 2px 12px rgba(0, 0, 0, 0.35), 0 1px 4px rgba(0, 0, 0, 0.25);
+  --glass-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.45), 0 2px 8px rgba(0, 0, 0, 0.30);
+  --glass-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.30), 0 1px 2px rgba(0, 0, 0, 0.20);
+
+  /* ── 텍스트 — 가독성 우선, 오프화이트 ── */
+  --text-primary: #f0eeea; /* 거의 흰색, 눈부심 방지용 오프화이트 */
+  --text-secondary: #c8c4bc; /* 서브 텍스트 — 충분한 대비 */
+  --text-muted: #9a968e; /* 뮤트 텍스트 */
+  --text-ghost: #6a6660; /* 고스트 — 날짜/카운트 등 보조 정보 */
+}
+
+/* ================================================================
+   Reset
+   ================================================================ */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -236,15 +300,11 @@ body {
   font-weight: 400;
   line-height: 1.6;
   color: var(--text-primary);
+  background-color: var(--bg-base);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* 순수 화이트 배경 — 그라디언트 없이 깔끔하게 */
-  background-color: var(--bg-base);
 }
-
-/* body::before 노이즈 텍스처 제거 — 화이트 톤에서 불필요 */
 
 #root {
   position: relative;
@@ -281,20 +341,19 @@ img {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ddd;
+  background: var(--border-muted);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #bbb;
+  background: var(--text-ghost);
 }
 
-/* ── Glass 유틸리티 — 화이트 톤 재정의 ── */
+/* ── Glass 유틸리티 ── */
 .glass {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
-  /* blur는 흰 배경에서 효과가 미미하므로 최소화 */
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -344,7 +403,7 @@ img {
 }
 
 /* ================================================================
-   PROSE (마크다운 렌더링)
+   PROSE
    ================================================================ */
 .prose {
   font-family: var(--font-body);
@@ -372,7 +431,7 @@ img {
 .prose h2 {
   font-size: var(--text-xl);
   padding-bottom: 0.5em;
-  border-bottom: 1px solid #ebebeb;
+  border-bottom: 1px solid var(--border-muted);
 }
 
 .prose h3 {
@@ -396,7 +455,7 @@ img {
   border-left: 3px solid var(--clr-silver-45);
   margin: 2em 0;
   padding: 1em 1.5em;
-  background: #fafafa;
+  background: var(--bg-subtle);
   border-radius: 0 var(--radius) var(--radius) 0;
   color: var(--text-secondary);
   font-style: italic;
@@ -409,15 +468,15 @@ img {
 .prose code:not(pre code) {
   font-family: var(--font-mono);
   font-size: 0.85em;
-  background: #f5f5f7;
-  border: 1px solid #e8e8ec;
+  background: var(--bg-hover);
+  border: 1px solid var(--border-input);
   padding: 0.15em 0.45em;
   border-radius: 5px;
   color: var(--c-vio);
 }
 
 .prose pre {
-  background: #1e1e2e;
+  background: #1a1a1a;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius);
   padding: 1.5em;
@@ -425,7 +484,7 @@ img {
   margin: 2em 0;
   font-size: var(--text-sm);
   line-height: 1.65;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .prose pre code {
@@ -452,7 +511,7 @@ img {
 
 .prose hr {
   border: none;
-  border-top: 1px solid #ebebeb;
+  border-top: 1px solid var(--border-muted);
   margin: 3em 0;
 }
 
@@ -461,24 +520,25 @@ img {
   border-collapse: collapse;
   margin: 2em 0;
   font-size: var(--text-sm);
-  background: #fff;
+  background: var(--bg-card);
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--glass-shadow);
 }
 
 .prose th, .prose td {
-  border: 1px solid #ebebeb;
+  border: 1px solid var(--border-muted);
   padding: 0.65em 1em;
   text-align: left;
 }
 
 .prose th {
-  background: #f7f7f9;
+  background: var(--bg-deep);
   font-weight: 600;
   font-size: var(--text-xs);
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  color: var(--text-secondary);
 }
 
 .prose img {
@@ -499,97 +559,10 @@ img {
   text-decoration-color: var(--c-vio);
 }
 
-/* ================================================================
-   다크모드 — [data-theme="dark"] 로 적용
-   <html data-theme="dark"> 일 때 override
-   ================================================================ */
-[data-theme="dark"] {
-  /* 배경 */
-  --bg-base: #0f0f13;
-  --bg-mid: #16161d;
-  --bg-deep: #1c1c26;
-
-  /* 헤더 */
-  --clr-header-base: rgba(15, 15, 19, 0.82);
-  --clr-header-scrolled: rgba(15, 15, 19, 0.96);
-
-  /* 텍스트 */
-  --text-primary: #f0eef8;
-  --text-secondary: #b8b4cc;
-  --text-muted: #7a7690;
-  --text-ghost: #4a4760;
-
-  /* accent — 다크에서 약간 밝게 */
-  --c-vio: #9d92c4;
-  --c-vio-m: #c4bcd8;
-  --c-vio-l: #ddd8ee;
-  --c-vio-xl: #2a2640;
-  --c-vio-2xl: #1e1c2e;
-
-  /* Glass 토큰 — 어두운 배경용 */
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-bg-hover: rgba(255, 255, 255, 0.09);
-  --glass-bg-deep: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-border-subtle: rgba(255, 255, 255, 0.04);
-  --glass-shadow: 0 2px 12px rgba(0, 0, 0, 0.30), 0 1px 4px rgba(0, 0, 0, 0.20);
-  --glass-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.40), 0 2px 8px rgba(0, 0, 0, 0.25);
-  --glass-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.15);
-}
-
-/* 다크모드 body 배경 */
-[data-theme="dark"] body,
-[data-theme="dark"] {
-  background-color: var(--bg-base);
-  color: var(--text-primary);
-}
-
-/* 다크모드 스크롤바 */
-[data-theme="dark"] ::-webkit-scrollbar-thumb {
-  background: #333;
-}
-
-[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
-/* 다크모드 흰 카드들 — 어두운 배경으로 */
-[data-theme="dark"] .prose pre {
-  background: #0d0d14;
-  border-color: rgba(255, 255, 255, 0.06);
-}
-
-[data-theme="dark"] .prose code:not(pre code) {
-  background: rgba(157, 146, 196, 0.12);
-  border-color: rgba(157, 146, 196, 0.20);
-}
-
-[data-theme="dark"] .prose blockquote {
-  background: rgba(255, 255, 255, 0.03);
-}
-
-[data-theme="dark"] .prose h2 {
-  border-bottom-color: rgba(255, 255, 255, 0.08);
-}
-
-[data-theme="dark"] .prose hr {
-  border-top-color: rgba(255, 255, 255, 0.08);
-}
-
-[data-theme="dark"] .prose table {
-  background: var(--bg-mid);
-}
-
-[data-theme="dark"] .prose th {
-  background: var(--bg-deep);
-}
-
-[data-theme="dark"] .prose th,
-[data-theme="dark"] .prose td {
-  border-color: rgba(255, 255, 255, 0.08);
-}
-
-/* 다크모드 전환 애니메이션 */
+/* ── 다크모드 전환 트랜지션 ── */
 *, *::before, *::after {
-  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.15s ease;
+  transition: background-color 0.22s ease,
+  border-color 0.22s ease,
+  color 0.15s ease,
+  box-shadow 0.22s ease;
 }

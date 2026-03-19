@@ -21,11 +21,8 @@ export default function Header() {
           <Link to="/" className={ styles.logo }>
             <img
                 src={ `${ import.meta.env.BASE_URL }favicon.ico` }
-                alt="logo"
-                aria-hidden="true"
-                className={ styles.logoGem }
-                width={ 20 }
-                height={ 20 }
+                alt="logo" aria-hidden="true"
+                className={ styles.logoGem } width={ 20 } height={ 20 }
             />
             <span className={ styles.logoText }>Maru-Log</span>
           </Link>
@@ -37,9 +34,7 @@ export default function Header() {
               { to: '/about', label: 'About', end: true },
             ].map(({ to, label, end }) => (
                 <NavLink
-                    key={ to }
-                    to={ to }
-                    end={ end }
+                    key={ to } to={ to } end={ end }
                     className={ ({ isActive }) =>
                         `${ styles.navLink } ${ isActive ? styles.navActive : '' }`
                     }
@@ -50,16 +45,21 @@ export default function Header() {
           </nav>
 
           <div className={ styles.actions }>
-            {/* 다크모드 토글 버튼 */ }
+            {/*
+            C-3 토글:
+            - 트랙에 ☀️ · knob · 🌙 배치
+            - knob이 슬라이드하며 아이콘 위를 지나감
+            - 라이트: knob 왼쪽(☀️ 위) / 다크: knob 오른쪽(🌙 위)
+          */ }
             <button
                 className={ styles.themeBtn }
                 onClick={ toggle }
                 aria-label={ isDark ? '라이트 모드로 전환' : '다크 모드로 전환' }
                 title={ isDark ? '라이트 모드' : '다크 모드' }
             >
-            <span className={ styles.themeBtnIcon } aria-hidden="true">
-              { isDark ? '☀︎' : '☽' }
-            </span>
+              <span className={ styles.themeBtnIcon } aria-hidden="true">☀️</span>
+              <div className={ styles.themeBtnTrack } aria-hidden="true"/>
+              <span className={ styles.themeBtnIcon } aria-hidden="true">🌙</span>
             </button>
           </div>
 

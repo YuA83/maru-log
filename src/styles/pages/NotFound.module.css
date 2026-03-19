@@ -6,7 +6,6 @@
   padding: 4rem 2rem;
 }
 
-/* 흰 카드 */
 .card {
   position: relative;
   text-align: center;
@@ -14,13 +13,12 @@
   max-width: 360px;
   width: 100%;
   border-radius: var(--radius-xl);
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.07);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   box-shadow: var(--glass-shadow);
   overflow: hidden;
 }
 
-/* 상단 accent 라인 */
 .card::before {
   content: '';
   position: absolute;
@@ -28,24 +26,15 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--c-vio-l) 30%,
-    var(--c-vio) 50%,
-    var(--c-vio-l) 70%,
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, var(--c-vio-l) 30%, var(--c-vio) 50%, var(--c-vio-l) 70%, transparent);
   opacity: 0.45;
   pointer-events: none;
 }
 
-/* 배경 orb 제거 */
 .orb {
   display: none;
 }
 
-/* 404 숫자 */
 .code {
   position: relative;
   font-family: var(--font-display);
@@ -53,12 +42,7 @@
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.05em;
-  /* accent 그라디언트 */
-  background: linear-gradient(
-    135deg,
-    var(--c-vio-l) 0%,
-    var(--c-vio) 60%
-  );
+  background: linear-gradient(135deg, var(--c-vio-l) 0%, var(--c-vio) 60%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -82,14 +66,13 @@
   margin-bottom: 2rem;
 }
 
-/* 돌아가기 버튼 */
 .btn {
   position: relative;
   display: inline-flex;
   align-items: center;
   padding: 0.55em 1.5em;
-  background: rgba(124, 111, 160, 0.08);
-  border: 1px solid rgba(124, 111, 160, 0.22);
+  background: rgba(124, 111, 160, 0.09);
+  border: 1px solid rgba(124, 111, 160, 0.25);
   border-radius: var(--radius-pill);
   font-size: var(--text-sm);
   font-weight: 600;
@@ -99,8 +82,8 @@
 }
 
 .btn:hover {
-  background: rgba(124, 111, 160, 0.14);
-  border-color: rgba(124, 111, 160, 0.35);
+  background: rgba(124, 111, 160, 0.16);
+  border-color: rgba(124, 111, 160, 0.40);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(124, 111, 160, 0.14);
+  box-shadow: 0 6px 18px rgba(124, 111, 160, 0.16);
 }

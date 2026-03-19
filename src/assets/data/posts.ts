@@ -104,30 +104,24 @@ export interface PostMeta {
 }
 
 // ── 포스트 목록 (최신순) ───────────────────────────────────────
+const CATEGORY = {
+  AWS: "dev/aws",
+  LINUX: "dev/linux",
+  JAVA: "dev/java",
+  JS: "dev/js",
+  ETC: "dev/etc",
+  DAILY: "life/daily",
+  BOOK: "life/book",
+};
 
 export const posts: PostMeta[] = [
+
   {
-    slug: 'reading-atomic-habits',
-    title: '아주 작은 습관의 힘을 읽고',
-    date: '2024-07-18',
-    description: '제임스 클리어의 습관 형성 이론을 개발자의 관점에서 재해석해봤습니다.',
-    tags: [ '독서', '자기계발' ],
-    category: 'life/daily',
-  },
-  {
-    slug: 'vite-plugin-deep-dive',
-    title: 'Vite 플러그인 구조 파헤치기',
-    date: '2024-07-16',
-    description: 'Rollup 플러그인 호환성부터 Vite 전용 훅까지, 플러그인 제작의 A to Z.',
-    tags: [ 'Vite', '번들러' ],
-    category: 'dev/aws',
-  },
-  {
-    slug: 'post1',
-    title: '첫 번째 포스트에 오신 것을 환영합니다',
-    date: '2024-07-15',
-    description: '블로그를 시작하며 앞으로 다룰 주제들과 계획을 소개합니다.',
-    tags: [ '일상' ],
-    category: 'life/book',
+    slug: "sample",
+    title: "[SAMPLE] 첫 번째 포스트에 오신 것을 환영합니다",
+    date: "2026-03-19",
+    description: "블로그를 시작하며 앞으로 다룰 주제들과 계획을 소개합니다.",
+    tags: [ "일상" ],
+    category: CATEGORY.DAILY,
   },
 ]

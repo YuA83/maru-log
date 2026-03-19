@@ -67,10 +67,10 @@
   right: 0;
   height: 2px;
   background: linear-gradient(
-    90deg,
-    var(--c-vio-l) 0%,
-    var(--c-vio) 50%,
-    var(--c-vio-l) 100%
+      90deg,
+      var(--c-vio-l) 0%,
+      var(--c-vio) 50%,
+      var(--c-vio-l) 100%
   );
   opacity: 0.50;
   pointer-events: none;
@@ -148,9 +148,20 @@
   padding: 2.5rem;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.07);
-  border-top: 1px solid #ebebeb; /* 헤더와의 연결선 */
+  border-top: 1px solid #ebebeb;
   border-radius: 0 0 var(--radius-xl) var(--radius-xl);
   box-shadow: var(--glass-shadow-sm);
+  /* 자식 요소의 margin이 밖으로 collapse되는 것 방지 */
+  overflow: hidden;
+}
+
+/* prose 내 첫/마지막 블록 요소의 외부 margin 제거 */
+.article .prose > :first-child {
+  margin-top: 0 !important;
+}
+
+.article .prose > :last-child {
+  margin-bottom: 0 !important;
 }
 
 /* ── 포스트 푸터 ── */
@@ -186,10 +197,10 @@
 
 .skeletonLine {
   background: linear-gradient(
-    90deg,
-    #f0f0f0 25%,
-    #e4e4e4 50%,
-    #f0f0f0 75%
+      90deg,
+      #f0f0f0 25%,
+      #e4e4e4 50%,
+      #f0f0f0 75%
   );
   background-size: 200% 100%;
   animation: shimmer 1.6s infinite;
@@ -250,5 +261,6 @@
   .header,
   .article .prose {
     padding: 1.5rem;
+    overflow: hidden;
   }
 }

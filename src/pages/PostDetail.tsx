@@ -1,13 +1,13 @@
-import {useParams, Link, Navigate} from 'react-router-dom'
+import { useParams, Link, Navigate } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import {format} from 'date-fns'
-import {ko} from 'date-fns/locale'
-import {posts, findCategory, getCategoryLabel} from '../assets/data/posts.ts'
-import {usePost} from '../hooks/usePost.ts'
+import { format } from 'date-fns'
+import { ko } from 'date-fns/locale'
+import { posts, findCategory, getCategoryLabel } from '../assets/data/posts.ts'
+import { usePost } from '../hooks/usePost.ts'
 import styles from '../styles/pages/PostDetail.module.css'
 
 // 코드 하이라이트 CSS (highlight.js github-dark 테마)
@@ -22,7 +22,7 @@ import 'highlight.js/styles/github-dark.css'
  * - ReactMarkdown으로 렌더링
  */
 export default function PostDetail() {
-  const {slug} = useParams<{ slug: string }>()
+  const { slug } = useParams<{ slug: string }>()
 
   // slug가 없으면 목록으로 리다이렉트
   if (!slug) return <Navigate to="/posts" replace/>
@@ -33,20 +33,20 @@ export default function PostDetail() {
   // 등록되지 않은 slug는 404
   if (!meta) return <Navigate to="/404" replace/>
 
-  return <PostContent slug={slug} meta={meta}/>
+  return <PostContent slug={ slug } meta={ meta }/>
 }
 
 // ─── 실제 컨텐츠 렌더링 (분리하여 조건부 훅 호출 문제 방지) ───
 
-import type {PostMeta} from '../assets/data/posts.ts'
+import type { PostMeta } from '../assets/data/posts.ts'
 
 interface PostContentProps {
   slug: string
   meta: PostMeta
 }
 
-function PostContent({slug, meta}: PostContentProps) {
-  const {content, isLoading, error, readingTime} = usePost(slug)
+function PostContent({ slug, meta }: PostContentProps) {
+  const { content, isLoading, error, readingTime } = usePost(slug)
 
   const formattedDate = format(new Date(meta.date), 'yyyy년 M월 d일 (EEE)', {
     locale: ko,
@@ -55,17 +55,17 @@ function PostContent({slug, meta}: PostContentProps) {
   // ── 로딩 상태 ──
   if (isLoading) {
     return (
-        <main className={styles.main}>
-          <div className={styles.skeleton}>
-            <div className={`${styles.skeletonLine} ${styles.skeletonTitle}`}/>
-            <div className={`${styles.skeletonLine} ${styles.skeletonMeta}`}/>
-            {Array.from({length: 6}).map((_, i) => (
+        <main className={ styles.main }>
+          <div className={ styles.skeleton }>
+            <div className={ `${ styles.skeletonLine } ${ styles.skeletonTitle }` }/>
+            <div className={ `${ styles.skeletonLine } ${ styles.skeletonMeta }` }/>
+            { Array.from({ length: 6 }).map((_, i) => (
                 <div
-                    key={i}
-                    className={styles.skeletonLine}
-                    style={{width: `${75 + Math.random() * 25}%`}}
+                    key={ i }
+                    className={ styles.skeletonLine }
+                    style={ { width: `${ 75 + Math.random() * 25 }%` } }
                 />
-            ))}
+            )) }
           </div>
         </main>
     )
@@ -74,12 +74,12 @@ function PostContent({slug, meta}: PostContentProps) {
   // ── 에러 상태 ──
   if (error || !content) {
     return (
-        <main className={styles.main}>
-          <div className={styles.error}>
-            <p className={styles.errorIcon}>✦</p>
-            <p className={styles.errorTitle}>포스트를 불러올 수 없습니다</p>
-            <p className={styles.errorDesc}>{error}</p>
-            <Link to="/posts" className={styles.errorBack}>
+        <main className={ styles.main }>
+          <div className={ styles.error }>
+            {/*<p className={styles.errorIcon}>✦</p>*/ }
+            <p className={ styles.errorTitle }>포스트를 불러올 수 없습니다</p>
+            <p className={ styles.errorDesc }>{ error }</p>
+            <Link to="/posts" className={ styles.errorBack }>
               ← 목록으로 돌아가기
             </Link>
           </div>
@@ -88,86 +88,87 @@ function PostContent({slug, meta}: PostContentProps) {
   }
 
   return (
-      <main className={`${styles.main} page-enter`}>
-        <article className={styles.article}>
-          {/* 브레드크럼 — Home > Category > 제목 */}
-          <nav className={styles.breadcrumb}>
+      <main className={ `${ styles.main } page-enter` }>
+        <article className={ styles.article }>
+          {/* 브레드크럼 — Home > Category > 제목 */ }
+          <nav className={ styles.breadcrumb }>
             <Link to="/">Home</Link>
             <span>›</span>
-            {(() => {
+            { (() => {
               const cat = findCategory(meta.category)
               if (!cat) return <Link to="/posts">Posts</Link>
               return (
                   <>
-                    <Link to={`/posts?category=${cat.parent.id}`}>
-                      {cat.parent.label}
+                    <Link to={ `/posts?category=${ cat.parent.id }` }>
+                      { cat.parent.label }
                     </Link>
-                    {cat.child && (
+                    { cat.child && (
                         <>
                           <span>›</span>
-                          <Link to={`/posts?category=${cat.child.id}`}>
-                            {cat.child.label}
+                          <Link to={ `/posts?category=${ cat.child.id }` }>
+                            { cat.child.label }
                           </Link>
                         </>
-                    )}
+                    ) }
                   </>
               )
-            })()}
+            })() }
             <span>›</span>
-            <span className={styles.breadcrumbCurrent}>{meta.title}</span>
+            <span className={ styles.breadcrumbCurrent }>{ meta.title }</span>
           </nav>
 
-          {/* 포스트 헤더 */}
-          <header className={styles.header}>
-            {/* 태그 */}
-            {meta.tags.length > 0 && (
-                <div className={styles.tags}>
-                  {meta.tags.map((tag) => (
-                      <span key={tag} className={styles.tag}>
-                  {tag}
+          {/* 포스트 헤더 */ }
+          <header className={ styles.header }>
+            {/* 태그 */ }
+            { meta.tags.length > 0 && (
+                <div className={ styles.tags }>
+                  { meta.tags.map((tag) => (
+                      <span key={ tag } className={ styles.tag }>
+                  { tag }
                 </span>
-                  ))}
+                  )) }
                 </div>
-            )}
+            ) }
 
-            {/* 제목 */}
-            <h1 className={styles.title}>{meta.title}</h1>
+            {/* 제목 */ }
+            <h1 className={ styles.title }>{ meta.title }</h1>
 
-            {/* 메타 정보 */}
-            <div className={styles.meta}>
-              <time dateTime={meta.date}>{formattedDate}</time>
+            {/* 메타 정보 */ }
+            <div className={ styles.meta }>
+              <time dateTime={ meta.date }>{ formattedDate }</time>
               <span>·</span>
-              <span>{readingTime}분 읽기</span>
+              <span>{ readingTime }분 읽기</span>
             </div>
 
-            {/* 요약 */}
-            <p className={styles.description}>{meta.description}</p>
+            {/* 요약 */ }
+            <p className={ styles.description }>{ meta.description }</p>
           </header>
 
-          {/* 구분선 */}
-          <div className={styles.divider} aria-hidden="true">✦</div>
+          {/* 구분선 */ }
+          {/*<div className={styles.divider} aria-hidden="true">✦</div>*/ }
 
-          {/* 마크다운 본문 */}
-          <div className="prose">
+          {/* 마크다운 본문 */ }
+          {/* prose: 전역 타이포 스타일 + module의 padding/border 모두 적용 */ }
+          <div className={ `prose ${ styles.prose }` }>
             <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[
+                remarkPlugins={ [ remarkGfm ] }
+                rehypePlugins={ [
                   rehypeHighlight,
                   rehypeSlug,
-                  [rehypeAutolinkHeadings, {behavior: 'wrap'}],
-                ]}
+                  [ rehypeAutolinkHeadings, { behavior: 'wrap' } ],
+                ] }
             >
-              {content}
+              { content }
             </ReactMarkdown>
           </div>
 
-          {/* 포스트 푸터 */}
-          <footer className={styles.footer}>
+          {/* 포스트 푸터 */ }
+          <footer className={ styles.footer }>
             <Link
-                to={`/posts?category=${meta.category}`}
-                className={styles.backLink}
+                to={ `/posts?category=${ meta.category }` }
+                className={ styles.backLink }
             >
-              ← {getCategoryLabel(meta.category)}으로 돌아가기
+              ← { getCategoryLabel(meta.category) }으로 돌아가기
             </Link>
           </footer>
         </article>

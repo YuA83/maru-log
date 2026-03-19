@@ -10,8 +10,8 @@
   /*opacity: 0;*/
   animation: cardEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transition: transform var(--transition),
-              box-shadow var(--transition),
-              border-color var(--transition);
+  box-shadow var(--transition),
+  border-color var(--transition);
   overflow: hidden;
 }
 

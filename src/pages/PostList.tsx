@@ -16,6 +16,7 @@ import styles from '../styles/pages/PostList.module.css'
  * 레이아웃: [사이드바 220px] | [포스트 목록 flex-1]
  */
 export default function PostList() {
+
   const [searchParams] = useSearchParams()
   const activeCategory = searchParams.get('category') ?? ''
 
@@ -31,7 +32,7 @@ export default function PostList() {
       // child id 선택 시 정확히 일치
       return p.category === activeCategory
     })
-  }, [activeCategory])
+  }, [activeCategory]);
 
   /** 현재 선택된 카테고리의 표시 제목 */
   const pageTitle = useMemo(() => {

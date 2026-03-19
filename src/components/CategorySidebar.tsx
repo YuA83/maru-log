@@ -111,7 +111,7 @@ const CategorySidebar = () => {
                   >
                     { parent.children.map((child) => {
                       const childCount = countByCategory(child.id)
-                      if (childCount === 0) return null
+                      // if (childCount === 0) return null
 
                       const isChildActive = activeCategory === child.id
 

@@ -7,7 +7,7 @@
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.07);
   box-shadow: var(--glass-shadow-sm);
-  opacity: 0;
+  /*opacity: 0;*/
   animation: cardEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   transition: transform var(--transition),
               box-shadow var(--transition),
